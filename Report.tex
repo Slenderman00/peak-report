@@ -190,8 +190,7 @@ It uses pull-based metrics collection approach this allows for quicker detection
     In our architecture we follow a strict separation of concerns resulting in as few containers per pod as possible.
 
 \section{System Design}
-\subsection{PEAK Architecture Overview}
-\subsubsection{peakDNS}
+\subsection{PEAK Architectural Overview}
 The system consists of a main SOA DNS server that delegates to multiple cluster-level DNS servers.
 Each cluster-level DNS server is responsible for a whole set of services, and the SOA DNS server delegates to them using NS records.
 This creates a hierarchical system where the SOA DNS server is the top-level authority, and the cluster-level DNS servers are responsible for service discoverability.
