@@ -37,7 +37,8 @@
 
 % Title configuration
 \title{
-    \textbf{Peak:}\\
+    \textbf{PEAK}\\[0.5em]
+    \large \textbf{P}roxy \textbf{E}liminating \textbf{A}rchitecture using \textbf{K}ubernetes\\[0.3em]
     \large Leveraging Proven Technologies to Create\\
     the Distributed System of the Future
 }
@@ -87,8 +88,10 @@ Modern DNS clients support multiple record resolution and automatic retry behavi
 transparent to applications.
 \\
 \\
-In this paper we present Peak and PeakDNS, a proof-of-concept implementation of a distributed system that uses cluster-level 
-DNS servers to manage service discoverability and load-based record management.
+In this paper we present Peak and PeakDNS, a proof-of-concept implementation of the proposed PEAK (Proxy Eliminating Architecture using Kubernetes) architecture.
+Our proof-of-concept demonstrates the feasibility of such a distributed system by implementing 
+a video sharing platform utilizing Kubernetes for container orchestration,
+and PeakDNS for service discoverability and load-based record management.
 
 
 \section{Technical background}
@@ -158,17 +161,36 @@ Docker\cite{DockerAcceleratedContainer2022} is a set of platform as a service (P
 \subsection{Kubernetes}
 Kubernetes (K8s)\cite{ProductionGradeContainerOrchestration} is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
 
+\subsubsection{Minikube}
+A minikube is a small Kubernetes cluster that runs on a local machine. This is useful for development and testing purposes.
+As one can test the deployment of services in a Kubernetes cluster without the need for a full-scale deployment.
+
 \subsection{Prometheus}
 Prometheus is an open-source monitoring and alerting toolkit originally built at SoundCloud.
 It uses pull-based metrics collection approach this allows for quicker detection of downed services.
 
+\subsection{Terminology}
+\subsubsection{Cluster}
+    A cluster is a group of services that are deployed together and share the same DNS server.
+    These clusters are usually located in the same data center or region.
+\subsubsection{Micro-cluster}
+    A micro-cluster is a group of services that are deployed under the same cluster and shares the same DNS record.
+    These are usually referred to as deployments in Kubernetes.
+\subsubsection{Cluster-level DNS server}
+    A cluster-level DNS server is a DNS server that is responsible for a whole set of micro clusters.
+\subsubsection{Pod}
+    A pod is a unit that usually contains one container, but can contain multiple containers that are deployed together.
+    In our architecture we follow a strict separation of concerns resulting in as few containers per pod as possible.
+
 \section{System Design}
-\subsection{Architectural Overview}
+\subsection{PEAK Architecture Overview}
+\subsubsection{peakDNS}
 The system consists of a main SOA DNS server that delegates to multiple cluster-level DNS servers.
 Each cluster-level DNS server is responsible for a whole set of services, and the SOA DNS server delegates to them using NS records.
 This creates a hierarchical system where the SOA DNS server is the top-level authority, and the cluster-level DNS servers are responsible for service discoverability.
 This can be seen in Figure \ref{fig:dns-hierarchy}.
-
+\\
+\\
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[
@@ -200,9 +222,14 @@ This can be seen in Figure \ref{fig:dns-hierarchy}.
     \caption{DNS Hierarchy with Multiple Cluster Servers}
     \label{fig:dns-hierarchy}
 \end{figure}
-
-
-
+\\
+\\
+Each cluster-level DNS server is responsible for a set of micro clusters, and points to them using AAAA records.
+This creates a direct mapping from DNS to services, as seen in Figure \ref{fig:service-dns-mapping}.
+In our case each of the cluster-level DNS servers are responsible for micro-clusters of all the services required 
+for the application to function. This reduces the need for inter-cluster communication between data centers.
+\\
+\\
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[
@@ -245,7 +272,7 @@ This can be seen in Figure \ref{fig:dns-hierarchy}.
     \node[above] at ($(dns)!0.3!(write)$) {};
     
     \end{tikzpicture}
-    \caption{Direct DNS to Service Mapping}
+    \caption{Direct DNS to Micro Cluster Mapping}
     \label{fig:service-dns-mapping}
     \end{figure}
 \pagebreak

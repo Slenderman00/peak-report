@@ -13,6 +13,13 @@
 \contentsline {subsection}{\numberline {2.7}JSON Web Tokens}{6}{subsection.2.7}%
 \contentsline {subsection}{\numberline {2.8}Docker}{6}{subsection.2.8}%
 \contentsline {subsection}{\numberline {2.9}Kubernetes}{6}{subsection.2.9}%
+\contentsline {subsubsection}{\numberline {2.9.1}Minikube}{6}{subsubsection.2.9.1}%
 \contentsline {subsection}{\numberline {2.10}Prometheus}{6}{subsection.2.10}%
-\contentsline {section}{\numberline {3}System Design}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Architectural Overview}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {2.11}Terminology}{7}{subsection.2.11}%
+\contentsline {subsubsection}{\numberline {2.11.1}Cluster}{7}{subsubsection.2.11.1}%
+\contentsline {subsubsection}{\numberline {2.11.2}Micro-cluster}{7}{subsubsection.2.11.2}%
+\contentsline {subsubsection}{\numberline {2.11.3}Cluster-level DNS server}{7}{subsubsection.2.11.3}%
+\contentsline {subsubsection}{\numberline {2.11.4}Pod}{7}{subsubsection.2.11.4}%
+\contentsline {section}{\numberline {3}System Design}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}PEAK Architecture Overview}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}peakDNS}{7}{subsubsection.3.1.1}%
