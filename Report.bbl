@@ -19,6 +19,25 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{DockerAcceleratedContainer2022}{misc}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Docker is a platform designed to help developers build, share, and run container applications. We handle the tedious setup, so you can focus on the code.}
+      \field{howpublished}{https://www.docker.com/}
+      \field{langid}{american}
+      \field{month}{5}
+      \field{shorttitle}{Docker}
+      \field{title}{Docker: {{Accelerated Container Application Development}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/joar/Zotero/storage/82IWC585/www.docker.com.html
+      \endverb
+    \endentry
     \entry{DomainNamesImplementation1987}{report}{}
       \list{institution}{1}{%
         {Internet Engineering Task Force}%
@@ -69,6 +88,49 @@
       \field{urlyear}{2024}
       \field{year}{2024}
       \field{urldateera}{ce}
+    \endentry
+    \entry{hindenInternetProtocolVersion1998}{report}{}
+      \name{author}{2}{}{%
+        {{hash=15731384c9322099ff99912c4a4277a0}{%
+           family={Hinden},
+           familyi={H\bibinitperiod},
+           given={Bob},
+           giveni={B\bibinitperiod}}}%
+        {{hash=ca230329284d4fb0ed5c9512b6f01ae7}{%
+           family={Deering},
+           familyi={D\bibinitperiod},
+           given={Steve\bibnamedelima E.},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \strng{namehash}{93588a36ead44bc15a5bda5a358cecf6}
+      \strng{fullhash}{93588a36ead44bc15a5bda5a358cecf6}
+      \strng{bibnamehash}{93588a36ead44bc15a5bda5a358cecf6}
+      \strng{authorbibnamehash}{93588a36ead44bc15a5bda5a358cecf6}
+      \strng{authornamehash}{93588a36ead44bc15a5bda5a358cecf6}
+      \strng{authorfullhash}{93588a36ead44bc15a5bda5a358cecf6}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This document specifies version 6 of the Internet Protocol (IPv6), also sometimes referred to as IP Next Generation or IPng. [STANDARDS-TRACK]}
+      \field{month}{12}
+      \field{number}{RFC 2460}
+      \field{title}{Internet {{Protocol}}, {{Version}} 6 ({{IPv6}}) {{Specification}}}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{1998}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC2460
+      \endverb
+      \verb{file}
+      \verb /home/joar/Zotero/storage/A85SBXP9/Hinden and Deering - 1998 - Internet Protocol, Version 6 (IPv6) Specification.pdf
+      \endverb
     \endentry
     \entry{IPv6AddressAllocation}{misc}{}
       \field{sortinit}{I}
@@ -133,6 +195,23 @@
       \endverb
       \verb{file}
       \verb /home/joar/Zotero/storage/AVECKBRY/Jones et al. - 2015 - JSON Web Token (JWT).pdf
+      \endverb
+    \endentry
+    \entry{ProductionGradeContainerOrchestration}{misc}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Kubernetes, also known as K8s, is an open source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery. Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community. Planet Scale Designed on the same principles that allow Google to run billions of containers a week, Kubernetes can scale without increasing your operations team.}
+      \field{howpublished}{https://kubernetes.io/}
+      \field{journaltitle}{Kubernetes}
+      \field{langid}{english}
+      \field{title}{Production-{{Grade Container Orchestration}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/joar/Zotero/storage/8EJ26PEY/kubernetes.io.html
       \endverb
     \endentry
     \entry{WelcomeRIPERIPE2024}{misc}{}

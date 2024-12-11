@@ -13,6 +13,8 @@
 \usepackage{xcolor}
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{xurl}
+\usepackage{tikz}
+\usetikzlibrary{calc}
 \setcounter{biburlnumpenalty}{100}
 \setcounter{biburlucpenalty}{100}
 \setcounter{biburllcpenalty}{100}
@@ -117,13 +119,21 @@ DNS records are used to provide information about a domain or hostname.
     \item TXT (Text) - Provides arbitrary text data.
 \end{itemize}
 
+\subsection{Source of Authority}
+The Source of Authority (SOA) record is a type of DNS record that provides authoritative information about a DNS zone.
+In our case the SOA record is used to point DNS clients to the different cluster-level DNS servers that manage service discoverability.
+
+\subsubsection{Time to Live}
+Each DNS record has a Time to Live (TTL) value that specifies how long the record should be cached.
+By keeping strict control over the records path of authority, we can ensure that changes to the DNS records propagate quickly.
+
 \subsection{Records with multiple answers}
 DNS clients support multiple record resolution, which allows multiple records to be returned for a single query.
 This feature is used to provide fault tolerance and load balancing by returning multiple IP addresses for a single domain.
 It is up to the client to decide which record to use, and most modern clients implement automatic retry behavior.
 
 \subsection{IPv6}
-Internet Protocol version 6 (IPv6) is the most recent version of the Internet Protocol (IP)
+Internet Protocol version 6 (IPv6)\cite{hindenInternetProtocolVersion1998} is the most recent version of the Internet Protocol (IP)
 \subsubsection{IPv6 Address Structure}
 IPv6 addresses are 128 bits long and are represented as eight groups of four hexadecimal digits separated by colons.
 This introduces an IP space that contains $2^{128}$ (approximately 340 undecillion, or $3.4 \times 10^{38}$) addresses, 
@@ -139,16 +149,105 @@ This makes large IPv6 allocations available to any organization that can demonst
 
 \subsection{JSON Web Tokens}
 JSON Web Tokens (JWT)\cite{jonesJSONWebToken2015} are an open, industry-standard RFC 7519 method for representing claims securely between two parties.
+A claim is a piece of information asserted about a subject, usually consisting of a key-value pair.
+JWTs are signed using a secret or a public/private key pair, which allows the receiving party to verify the integrity of the token.
 
 \subsection{Docker}
-Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
+Docker\cite{DockerAcceleratedContainer2022} is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
 
 \subsection{Kubernetes}
-Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
+Kubernetes (K8s)\cite{ProductionGradeContainerOrchestration} is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
 
 \subsection{Prometheus}
 Prometheus is an open-source monitoring and alerting toolkit originally built at SoundCloud.
+It uses pull-based metrics collection approach this allows for quicker detection of downed services.
 
+\section{System Design}
+\subsection{Architectural Overview}
+The system consists of a main SOA DNS server that delegates to multiple cluster-level DNS servers.
+Each cluster-level DNS server is responsible for a whole set of services, and the SOA DNS server delegates to them using NS records.
+This creates a hierarchical system where the SOA DNS server is the top-level authority, and the cluster-level DNS servers are responsible for service discoverability.
+This can be seen in Figure \ref{fig:dns-hierarchy}.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance = 2cm,
+        box/.style = {draw, rectangle, minimum width=2.5cm, minimum height=1cm},
+        soabox/.style = {draw, rectangle, minimum width=2.5cm, minimum height=1.3cm},
+        arrow/.style = {->, thick}
+    ]
+    
+    % SOA DNS Server at the top
+    \node[soabox] (soa) at (0,0) {SOA DNS};
+    
+    % Cluster DNS servers below
+    \node[box] (dns1) at (-4,-2) {Cluster DNS 1};
+    \node[box] (dns2) at (0,-2) {Cluster DNS 2};
+    \node[box] (dns3) at (4,-2) {Cluster DNS 3};
+    
+    % Draw arrows
+    \draw[arrow] (soa) -- (dns1);
+    \draw[arrow] (soa) -- (dns2);
+    \draw[arrow] (soa) -- (dns3);
+    
+    % Add NS record labels to arrows
+    \node[above right] at (soa.south west) {NS};
+    \node[above] at (soa.south) {NS};
+    \node[above left] at (soa.south east) {NS};
+    
+    \end{tikzpicture}
+    \caption{DNS Hierarchy with Multiple Cluster Servers}
+    \label{fig:dns-hierarchy}
+\end{figure}
+
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance = 2cm,
+        box/.style = {draw, rectangle, minimum width=2.8cm, minimum height=1cm},
+        clusterbox/.style = {draw, rectangle, minimum width=2.8cm, minimum height=2cm},
+        arrow/.style = {->, thick}
+    ]
+    
+    % Cluster DNS Server at the top
+    \node[clusterbox] (dns) at (0,0) {\parbox{2.8cm}{\centering Cluster DNS \\ AAAA}};
+    
+    % First row of services
+    \node[box] (self) at (-6,-2) {self.auth.peak};
+    \node[box] (upload) at (-2.5,-2) {video.upload.peak};
+    \node[box] (status) at (2.5,-2) {video.status.peak};
+    \node[box] (stream) at (6,-2) {video.stream.peak};
+    
+    % Second row of services
+    \node[box] (info) at (-3.5,-4) {user.info.peak};
+    \node[box] (read) at (0,-4) {read.posts.peak};
+    \node[box] (write) at (3.5,-4) {write.posts.peak};
+    
+    % Draw arrows to all services
+    \draw[arrow] (dns) -- (self);
+    \draw[arrow] (dns) -- (upload);
+    \draw[arrow] (dns) -- (status);
+    \draw[arrow] (dns) -- (stream);
+    \draw[arrow] (dns) -- (info);
+    \draw[arrow] (dns) -- (read);
+    \draw[arrow] (dns) -- (write);
+    
+    % Add AAAA labels with more space
+    \node[above] at ($(dns)!0.3!(self)$) {};
+    \node[above] at ($(dns)!0.3!(upload)$) {};
+    \node[above] at ($(dns)!0.3!(status)$) {};
+    \node[above] at ($(dns)!0.3!(stream)$) {};
+    \node[above] at ($(dns)!0.3!(info)$) {};
+    \node[above] at ($(dns)!0.3!(read)$) {};
+    \node[above] at ($(dns)!0.3!(write)$) {};
+    
+    \end{tikzpicture}
+    \caption{Direct DNS to Service Mapping}
+    \label{fig:service-dns-mapping}
+    \end{figure}
 \pagebreak
 \printbibliography
 

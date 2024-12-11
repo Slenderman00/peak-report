@@ -2364,8 +2364,11 @@
     <bcf:citekey order="1" intorder="1">WelcomeRIPERIPE2024</bcf:citekey>
     <bcf:citekey order="2" intorder="1">heimonenPeakDNS2024</bcf:citekey>
     <bcf:citekey order="3" intorder="1">DomainNamesImplementation1987</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">IPv6AddressAllocation</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">jonesJSONWebToken2015</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">hindenInternetProtocolVersion1998</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">IPv6AddressAllocation</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">jonesJSONWebToken2015</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">DockerAcceleratedContainer2022</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">ProductionGradeContainerOrchestration</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

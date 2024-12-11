@@ -4,11 +4,15 @@
 \contentsline {subsection}{\numberline {2.2}PeakDNS}{4}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Domain Name System}{4}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}DNS Record Types}{4}{subsubsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.4}Records with multiple answers}{5}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}IPv6}{5}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}IPv6 Address Structure}{5}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}IPv6 Address Allocation policy}{5}{subsubsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.6}JSON Web Tokens}{5}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Docker}{6}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Kubernetes}{6}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Prometheus}{6}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.4}Source of Authority}{5}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Time to Live}{5}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}Records with multiple answers}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}IPv6}{5}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}IPv6 Address Structure}{5}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}IPv6 Address Allocation policy}{6}{subsubsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.7}JSON Web Tokens}{6}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Docker}{6}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Kubernetes}{6}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Prometheus}{6}{subsection.2.10}%
+\contentsline {section}{\numberline {3}System Design}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Architectural Overview}{6}{subsection.3.1}%
