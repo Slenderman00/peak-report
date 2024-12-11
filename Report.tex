@@ -1,0 +1,155 @@
+% !TeX root = Report.tex
+\documentclass[12pt]{article}
+
+% Package imports (organized and deduplicated)
+\usepackage{biblatex}
+\usepackage{changepage}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{sectsty}
+\usepackage{xcolor}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{xurl}
+\setcounter{biburlnumpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\setcounter{biburllcpenalty}{100}
+
+% Make bibliography ragged right instead of justified
+\AtBeginDocument{
+  \renewcommand{\bibsetup}{\raggedright}
+}
+% Document configuration
+\restylefloat{table}
+\graphicspath{{./images/}}
+\addbibresource{Library.bib}
+\subsectionfont{\fontsize{12}{14}\selectfont}
+
+% Author information
+\author{
+    Joar Heimonen\\
+    \texttt{contact@joar.me}
+}
+
+% Title configuration
+\title{
+    \textbf{Peak:}\\
+    \large Leveraging Proven Technologies to Create\\
+    the Distributed System of the Future
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    The current paradigm of cloud computing heavily relies on proxies, which introduce single points of failure in systems meant to be distributed. 
+    We propose a radical simplification of the current architecture by leveraging the abundance of IPv6 addresses and utilizing modern purpose-built 
+    DNS servers to create a distributed system that is both more reliable and scales drastically better than the current cloud computing paradigm. 
+    The proposed system utilizes cluster-level DNS servers that dynamically manage service discoverability using Prometheus for monitoring. 
+    Service-to-service communication is handled through JSON Web Tokens, creating an intercommunication system that scales 1:1 with the number of users. 
+    The system achieves robust fault tolerance through native DNS client failover capabilities, leveraging the universal support for multiple 
+    record resolution and automatic retry behavior present in all modern DNS implementations. 
+    This eliminates the need for custom failover logic while providing battle-tested reliability mechanisms that operate transparently to applications. 
+    This paper describes the implementation of Peak, a proof-of-concept implementation of the proposed architecture, along with its development process and tooling.
+\end{abstract}
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+
+\section{Introduction}
+The evolution of distributed web systems can be traced back to early protocols like FastCGI, which introduced the concept of long-running service processes.
+This marked a significant departure from CGI's one-process-per-request approach,
+and established patterns of intermediary communication that would later become ubiquitous in cloud computing.
+FastCGI's architecture, with its process manager mediating between web servers and application processes, was a precursor to the modern cloud computing paradigm,
+where services are abstracted into containers and orchestrated by centralized management systems.
+\\
+\\
+The modern cloud computing landscape has evolved this simple concept into a complex ecosystem of proxies,
+load balancers, message brokers, and service discovery mechanisms. While this architecture has served us well, it introduces
+significant operational complexity and creates single points of failure in systems designed to be distributed.
+Current deployments typically rely on multiple layers of proxies for routing, discovery, and load balancing, each representing
+a potential point of failure.
+\\
+\\
+With the widespread adoption of IPv6, we have entered a new era in distributed systems architecture. RIPE NCC's allocation policy
+provides Local Internet Registries with /29 blocks, each containing over 500,000 /48 networks. This abundance of addresses eliminates
+the need for network address translation and, by extension, many of the proxy-based patterns that evolved around address scarcity.
+Modern DNS clients support multiple record resolution and automatic retry behavior, providing a robust failover mechanism that is 
+transparent to applications.
+\\
+\\
+In this paper we present Peak and PeakDNS, a proof-of-concept implementation of a distributed system that uses cluster-level 
+DNS servers to manage service discoverability and load-based record management.
+
+
+\section{Technical background}
+\subsection{Réseaux IP Européens (RIPE)}
+Réseaux IP Européens (RIPE)\cite{WelcomeRIPERIPE2024} is a regional internet registry (RIR) 
+that allocates and registers IP addresses in Europe, the Middle East, and parts of Central Asia.
+
+\subsection{PeakDNS}
+PeakDNS\cite{heimonenPeakDNS2024} is a purpose-built DNS server that manages service discoverability and 
+load-based record management for the Peak distributed system.
+It is designed to integrate with Prometheus for monitoring and alerting.
+and Kubernetes for container discoverability.
+
+\subsection{Domain Name System}
+The Domain Name System (DNS)\cite{DomainNamesImplementation1987} is a hierarchical and decentralized naming system for computers, 
+services, or other resources connected to the Internet or a private network.
+\subsubsection{DNS Record Types}
+DNS records are used to provide information about a domain or hostname.
+\begin{itemize}
+    \item A (Address) - Maps a domain to an IPv4 address.
+    \item AAAA (Address) - Maps a domain to an IPv6 address.
+    \item CNAME (Canonical Name) - Maps a domain to another domain.
+    \item MX (Mail Exchange) - Maps a domain to a mail server.
+    \item NS (Name Server) - Maps a domain to a name server.
+    \item PTR (Pointer) - Maps an IP address to a domain.
+    \item SOA (Start of Authority) - Provides authoritative information about a DNS zone.
+    \item SRV (Service) - Maps a domain to a service.
+    \item TXT (Text) - Provides arbitrary text data.
+\end{itemize}
+
+\subsection{Records with multiple answers}
+DNS clients support multiple record resolution, which allows multiple records to be returned for a single query.
+This feature is used to provide fault tolerance and load balancing by returning multiple IP addresses for a single domain.
+It is up to the client to decide which record to use, and most modern clients implement automatic retry behavior.
+
+\subsection{IPv6}
+Internet Protocol version 6 (IPv6) is the most recent version of the Internet Protocol (IP)
+\subsubsection{IPv6 Address Structure}
+IPv6 addresses are 128 bits long and are represented as eight groups of four hexadecimal digits separated by colons.
+This introduces an IP space that contains $2^{128}$ (approximately 340 undecillion, or $3.4 \times 10^{38}$) addresses, 
+eliminating the need for network address translation. 
+To put this in perspective, the entire IPv4 address space ($2^{32}$ addresses) could fit into the IPv6 address space $2^{96}$ times 
+(approximately 79 octillion times).
+In other words, we could replicate the entire Internet's IPv4 address space \\79,228,162,514,264,337,593,543,950,336 times within IPv6's address space.
+\subsubsection{IPv6 Address Allocation policy}
+RIPE NCC's allocation policy provides Local Internet Registries with /32 up to /29 blocks, each containing over 500,000 /48 networks.
+To qualify for these allocations the Local Internet registry 
+"must have a plan for making sub-allocations to other organizations and/or End Site assignments within two years."\cite{IPv6AddressAllocation}.
+This makes large IPv6 allocations available to any organization that can demonstrate a need for them.
+
+\subsection{JSON Web Tokens}
+JSON Web Tokens (JWT)\cite{jonesJSONWebToken2015} are an open, industry-standard RFC 7519 method for representing claims securely between two parties.
+
+\subsection{Docker}
+Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
+
+\subsection{Kubernetes}
+Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
+
+\subsection{Prometheus}
+Prometheus is an open-source monitoring and alerting toolkit originally built at SoundCloud.
+
+\pagebreak
+\printbibliography
+
+\end{document}

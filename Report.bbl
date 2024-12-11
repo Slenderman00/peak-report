@@ -1,0 +1,160 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{DomainNamesImplementation1987}{report}{}
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This RFC is the revised specification of the protocol and format used in the implementation of the Domain Name System. It obsoletes RFC-883. This memo documents the details of the domain name client - server communication.}
+      \field{month}{11}
+      \field{number}{RFC 1035}
+      \field{title}{Domain Names - Implementation and Specification}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{1987}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC1035
+      \endverb
+      \verb{file}
+      \verb /home/joar/Zotero/storage/AWEJL66X/1987 - Domain names - implementation and specification.pdf
+      \endverb
+    \endentry
+    \entry{heimonenPeakDNS2024}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6d975a8d6337c5d78bbffcd5535d1dbb}{%
+           family={Heimonen},
+           familyi={H\bibinitperiod},
+           given={Joar},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{6d975a8d6337c5d78bbffcd5535d1dbb}
+      \strng{fullhash}{6d975a8d6337c5d78bbffcd5535d1dbb}
+      \strng{bibnamehash}{6d975a8d6337c5d78bbffcd5535d1dbb}
+      \strng{authorbibnamehash}{6d975a8d6337c5d78bbffcd5535d1dbb}
+      \strng{authornamehash}{6d975a8d6337c5d78bbffcd5535d1dbb}
+      \strng{authorfullhash}{6d975a8d6337c5d78bbffcd5535d1dbb}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A fork of GoodDNS developed to operate as a kubernetes gateway}
+      \field{month}{12}
+      \field{title}{{{PeakDNS}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{IPv6AddressAllocation}{misc}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{abstract}{ripe-738: IPv6 Address Allocation and Assignment Policy}
+      \field{howpublished}{https://www.ripe.net/publications/docs/ripe-738/}
+      \field{journaltitle}{RIPE Network Coordination Center}
+      \field{langid}{english}
+      \field{title}{{{IPv6 Address Allocation}} and {{Assignment Policy}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/joar/Zotero/storage/LD5WV3A2/ripe-738.html
+      \endverb
+    \endentry
+    \entry{jonesJSONWebToken2015}{report}{}
+      \name{author}{3}{}{%
+        {{hash=bfa19f15a98d15831cd377b8813e6672}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Michael\bibnamedelima B.},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=81e40ae87af997090fa9a9696e364c65}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=34e6848475fd66697bfcb80787f2aef0}{%
+           family={Sakimura},
+           familyi={S\bibinitperiod},
+           given={Nat},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \strng{namehash}{8456e57585316c5ad570515143f00129}
+      \strng{fullhash}{8456e57585316c5ad570515143f00129}
+      \strng{bibnamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authorbibnamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authornamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authorfullhash}{8456e57585316c5ad570515143f00129}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and/or encrypted.}
+      \field{month}{5}
+      \field{number}{RFC 7519}
+      \field{title}{{{JSON Web Token}} ({{JWT}})}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{14}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC7519
+      \endverb
+      \verb{file}
+      \verb /home/joar/Zotero/storage/AVECKBRY/Jones et al. - 2015 - JSON Web Token (JWT).pdf
+      \endverb
+    \endentry
+    \entry{WelcomeRIPERIPE2024}{misc}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The RIPE NCC is one of five Regional Internet Registries (RIRs) providing Internet resource allocation and registration, and coordination activities.}
+      \field{howpublished}{https://www.ripe.net/}
+      \field{journaltitle}{RIPE Network Coordination Center}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{title}{Welcome to {{RIPE}} and the {{RIPE NCC}}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/joar/Zotero/storage/GWUJ3CDM/www.ripe.net.html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
