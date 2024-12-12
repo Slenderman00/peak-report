@@ -535,6 +535,14 @@ These metrics are then used to manage the DNS records of the services in the mic
     \label{fig:TL}
 \end{figure}
 
+\subsection{Client-Mediated communication}
+To reduce the complexities of inter-service communication, we have devised a system where the client acts as an intermediary.
+This allows for service to service communication that always scales 1:1 with the number of users. This helps 
+reduce service-side complexity and allows for a more robust system. 
+This approach greatly simplifies the service-to-service communication and is a radical departure from the current cloud computing paradigm.
+However, this approach comes with some caveats, as the client is now responsible for the communication between services, Each
+microservice must be designed to function without
+
 \pagebreak
 \printbibliography
 \license
