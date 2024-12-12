@@ -14,6 +14,7 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{xurl}
 \usepackage{tikz}
+\usetikzlibrary{shapes.geometric,positioning,fit}
 \usepackage{./timing-diagrams}
 \usetikzlibrary{calc}
 \setcounter{biburlnumpenalty}{100}
@@ -123,6 +124,7 @@ PeakDNS\cite{heimonenPeakDNS2024} is a purpose-built DNS server that manages ser
 metric-based record management for the Peak distributed system.
 It is designed to integrate with Prometheus for monitoring and alerting.
 and Kubernetes for container discoverability.
+Note that PeakDNS originally was named GoodDNS.
 
 \subsection{Domain Name System}
 The Domain Name System (DNS)\cite{DomainNamesImplementation1987} is a hierarchical and decentralized naming system for computers, 
@@ -341,67 +343,6 @@ It generates the JSON Web Tokens that are used for service-to-service communicat
 All JWTs have an expiration time and the authentication service is the only service that can
 issue a new expiration time for a JWT.
 Other services can append claims to the JWT and re-sign them, but they cannot change the expiration time.
-An example of this can be seen in \textit{Figure \ref{fig:JWTreq}} where the client requests a video claim from the video service,
-so that it can prove ownership of a video to the video service.
-\newpage
-
-\begin{figure}[h]
-    \begin{tikzpicture}
-        \tline{video}{4};
-        \ttimeline{video}{10};
-        \tcaption{video}{Video service};
-        \ttick{video};
-        \tskip{video}{1};
-        \tbox{video}{2}{Videos};
-
-        \tline{client}{2};
-        \ttimeline{client}{10};
-        \tcaption{client}{Client};
-        \ttick{client};
-        \tskip{client}{0};
-        \tbox{client}{1}{SPA};
-
-        \tskip{client}{0};
-        \tskip{video}{-1};
-        \ttextarrowU{video}{
-            \begin{tabular}{c}
-                Requests video claim / Response JWT
-            \end{tabular}
-        };
-        \tskip{video}{-1};
-        \tarrowLU{client}{video}{};
-
-        \tskip{client}{2};
-        \tskip{video}{2};
-        \tarrowUL{video}{client}{};
-
-        \ttick{client};
-        \tskip{client}{0};
-        \tbox{client}{1}{SPA};
-        \ttick{client};
-        \tskip{client}{2};
-        \tbox{client}{3}{Rendering};
-
-        \tline{post}{0};
-        \ttimeline{post}{10};
-        \tcaption{post}{Post service};
-        \ttick{post};
-        \tskip{post}{4};
-        \tbox{post}{2}{Posts};
-
-        \tskip{client}{-5};
-        \tskip{post}{-2};
-        \tarrowUL{client}{post}{};
-        \tskip{client}{2};
-        \tskip{post}{2};
-        \tarrowLU{post}{client}{};
-
-
-
-    \end{tikzpicture}
-    \caption{Timeline of two services passing data to each other using JSON Web Tokens and the client as an intermediary.}
-    \label{fig:JWTreq}
-\end{figure}
 
 \subsubsection{Metric-Based record management}
 The cluster-level DNS server uses Prometheus to monitor the metrics of the micro-clusters it is responsible for.
@@ -535,13 +476,190 @@ These metrics are then used to manage the DNS records of the services in the mic
     \label{fig:TL}
 \end{figure}
 
-\subsection{Client-Mediated communication}
+\newpage
+
+\subsubsection{Client-Mediated communication}
 To reduce the complexities of inter-service communication, we have devised a system where the client acts as an intermediary.
-This allows for service to service communication that always scales 1:1 with the number of users. This helps 
-reduce service-side complexity and allows for a more robust system. 
-This approach greatly simplifies the service-to-service communication and is a radical departure from the current cloud computing paradigm.
-However, this approach comes with some caveats, as the client is now responsible for the communication between services, Each
-microservice must be designed to function without
+This allows for service-to-service communication that always scales 1:1 with the number of users.  
+This approach greatly simplifies the inter-service communication and is a radical departure from the current cloud computing paradigm.
+\textit{Figure \ref{fig:JWTreq}} illustrates the timeline of two services passing data to each other using JSON Web Tokens and the client as an intermediary.
+However, due to the significant departure from the current paradigm, this approach requires services to be designed with this in mind.
+
+
+\newpage
+
+\begin{figure}[h]
+    \begin{tikzpicture}
+        \tline{video}{4};
+        \ttimeline{video}{10};
+        \tcaption{video}{Video service};
+        \ttick{video};
+        \tskip{video}{1};
+        \tbox{video}{2}{Videos};
+
+        \tline{client}{2};
+        \ttimeline{client}{10};
+        \tcaption{client}{Client};
+        \ttick{client};
+        \tskip{client}{0};
+        \tbox{client}{1}{SPA};
+
+        \tskip{client}{0};
+        \tskip{video}{-1};
+        \ttextarrowU{video}{
+            \begin{tabular}{c}
+                Requests video claim / Response JWT
+            \end{tabular}
+        };
+        \tskip{video}{-1};
+        \tarrowLU{client}{video}{};
+
+        \tskip{client}{2};
+        \tskip{video}{2};
+        \tarrowUL{video}{client}{};
+
+        \ttick{client};
+        \tskip{client}{0};
+        \tbox{client}{1}{SPA};
+        \ttick{client};
+        \tskip{client}{2};
+        \tbox{client}{3}{Rendering};
+
+        \tline{post}{0};
+        \ttimeline{post}{10};
+        \tcaption{post}{Post service};
+        \ttick{post};
+        \tskip{post}{4};
+        \tbox{post}{2}{Posts};
+
+        \tskip{client}{-5};
+        \tskip{post}{-2};
+        \tarrowUL{client}{post}{};
+        \tskip{client}{2};
+        \tskip{post}{2};
+        \tarrowLU{post}{client}{};
+
+
+
+    \end{tikzpicture}
+    \caption{Timeline of two services passing data to each other using JSON Web Tokens and the client as an intermediary.}
+    \label{fig:JWTreq}
+\end{figure}
+
+\subsection{Reference Implementation Overview}
+Our reference implementation is named Peak and consists of seven different services 
+as seen in \textit{Figure \ref{fig:service-dns-mapping}}. Peak is a video sharing platform
+that has been developed in parallel with the PEAK architecture. This section will 
+cover architectural details that are specific to the reference implementation.
+Out hope is that this section will demonstrate how conventional architectural concepts 
+still apply in the PEAK architecture. The reference implementation only implements
+PEAK at the cluster level, and does not implement the SOA DNS server.
+
+
+\subsubsection{Authentication: self.auth.peak}
+This is our authentication service, it is written to be as simple as possible.
+It reads and writes to a table containing only the most basic user information.
+As seen in \textit{Table \ref{tab:user-data}} the table contains the user's email, 
+username, password, and the time the user was created. The authentication service
+is the only service that can issue a JWT with a new expiration time, this
+happens at login, registering and when the JWT is about to expire.
+In an architecture like this it is paramount that all services checks
+the JWT signature and expiration time before accepting it as valid.
+If these checks are missing the system is vulnerable to a range of attacks.
+
+\begin{table}[h]
+    \centering
+    \caption{Example User Data in Authentication Service. Note that some data has been shortened.}
+    \begin{tabular}{|l|l|l|p{4.5cm}|l|}
+        \hline
+        \textbf{uid} & \textbf{email} & \textbf{username} & \textbf{password} & \textbf{created\_at} \\
+        \hline
+        1001 & user1@example.com & johndoe & \$2a\$12\$LQv3c1yqBg... & 2024-12-13 10:30:00 \\
+        \hline
+        1002 & user2@example.com & janedoe & \$2a\$12\$9iR2xk5yqoF... & 2024-12-13 10:45:00 \\
+        \hline
+        1003 & user3@example.com & bobsmith & \$2a\$12\$kJH3ns7yjkZ... & 2024-12-13 11:15:00 \\
+        \hline
+    \end{tabular}
+    \label{tab:user-data}
+\end{table}
+
+\newpage
+
+\subsubsection{Video Services}
+The video system consists of four services:
+\begin{itemize}
+    \item \textbf{video.upload.peak} - This service is responsible for uploading videos
+    \item \textbf{video.status.peak} - This service is responsible for checking the status of video encoding
+    \item \textbf{video.stream.peak} - This service is responsible for streaming videos
+    \item \textbf{encoding service} - This service is responsible for encoding videos
+\end{itemize}
+
+As one can see in \textit{Figure \ref{fig:service-dns-mapping}} the video services looks quite conventional.
+The only difference from a conventional architecture is that the client communicates directly with each service,
+We have removed the proxy layer that usually would be present in a system like this, and we have also reduced
+inter-service communication to a minimum using only databases and queues for direct inter-service communication.
+All the services share the same network file system (NFS) for storing videos.
+
+
+\begin{figure}[h]    
+     \begin{tikzpicture}[scale=0.7,transform shape,
+     service/.style = {
+     rectangle,
+     draw=black,
+     rounded corners=3pt,
+     minimum width=4cm,
+     minimum height=1cm,
+     fill=gray!10
+     },
+     infrastructure/.style = {
+     cylinder,
+     draw=black,
+     shape border rotate=90,
+     aspect=0.3,
+     minimum height=2.5cm,
+     minimum width=1.5cm,
+     fill=white
+     },
+     client/.style = {
+     rectangle,
+     draw=black,
+     minimum width=2cm,
+     minimum height=1cm,
+     fill=white
+     },
+     arrow/.style = {
+     ->,
+     >=latex,
+     semithick
+     }
+     ]
+     
+    % First create all nodes
+    \node[service] (upload) at (12,0) {video.upload.peak};
+    \node[infrastructure] (queue) at (6,0) {RabbitMQ};
+    \node[service] (encoder) at (0,-3) {encoding service};
+    \node[infrastructure] (db) at (6,-3) {Database};
+    \node[service] (status) at (12,-3) {video.status.peak};
+    \node[service] (stream) at (12,-6) {video.stream.peak};
+    \node[client] (client) at (18,-3) {Client};
+    
+    % Then draw the NFS box around them
+    \node[draw=gray,dashed,rounded corners,inner sep=1cm,fit={(upload) (queue) (encoder) (db) (status) (stream)},label={[gray]above:NFS}] {};
+    
+    % Finally draw all the arrows
+    \draw[arrow] (upload) -- node[above, sloped] {Upload video} (queue);
+    \draw[arrow] (queue) -- node[above, sloped] {Consume video} (encoder);
+    \draw[arrow] (encoder) -- node[above] {Write progress} (db);
+    \draw[arrow] (db) -- node[above] {Read status} (status);
+    \draw[arrow] (client) -- node[above, sloped] {Request status} (status);
+    \draw[arrow] (client) -- node[below, sloped] {Stream video} (stream);
+    \draw[arrow] (client) -- node[above, sloped] {Upload Video} (upload);
+    
+    \end{tikzpicture}
+    \caption{Video Services Overview}
+    \label{tab:user-data}
+\end{figure}
 
 \pagebreak
 \printbibliography
