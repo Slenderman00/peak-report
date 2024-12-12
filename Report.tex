@@ -20,6 +20,17 @@
 \setcounter{biburlucpenalty}{100}
 \setcounter{biburllcpenalty}{100}
 
+\definecolor{darkblue}{RGB}{0, 0, 102} 
+\hypersetup{
+    colorlinks=true,
+    pdfborder={0 0 0},
+    linkbordercolor=white,
+    urlcolor=darkblue,
+    linkcolor=darkblue,
+    citecolor=darkblue,
+    filecolor=darkblue
+}
+
 % Make bibliography ragged right instead of justified
 \AtBeginDocument{
   \renewcommand{\bibsetup}{\raggedright}
@@ -99,7 +110,7 @@ transparent to applications.
 In this paper we present Peak and PeakDNS, a proof-of-concept implementation of the proposed PEAK (Proxy Eliminating Architecture using Kubernetes) architecture.
 Our proof-of-concept demonstrates the feasibility of such a distributed system by implementing 
 a video sharing platform utilizing Kubernetes for container orchestration,
-and PeakDNS for service discoverability and load-based record management.
+and PeakDNS for service discoverability and metric-based record management.
 
 
 \section{Technical background}
@@ -109,7 +120,7 @@ that allocates and registers IP addresses in Europe, the Middle East, and parts 
 
 \subsection{PeakDNS}
 PeakDNS\cite{heimonenPeakDNS2024} is a purpose-built DNS server that manages service discoverability and 
-load-based record management for the Peak distributed system.
+metric-based record management for the Peak distributed system.
 It is designed to integrate with Prometheus for monitoring and alerting.
 and Kubernetes for container discoverability.
 
@@ -138,7 +149,7 @@ In our case the SOA record is used to point DNS clients to the different cluster
 Each DNS record has a Time to Live (TTL) value that specifies how long the record should be cached.
 By keeping strict control over the records path of authority and low TTLs, we can ensure that changes to the DNS records propagate quickly.
 
-\subsection{Multi record resolution}
+\subsubsection{Multi record resolution}
 DNS clients support multiple record resolution, which allows multiple records to be returned for a single query.
 This feature is used to provide fault tolerance and load balancing by returning multiple IP addresses for a single domain.
 It is up to the client to decide which record to use, and most modern clients implement automatic retry behavior.
@@ -211,7 +222,7 @@ It uses pull-based metrics collection approach this allows for quicker detection
 
 \subsubsection{PromQL}
 Prometheus Query Language (PromQL) is a query language for Prometheus that allows you to select and aggregate time series data.
-In our case it is used to dynamically manage the load-based record management in PeakDNS.
+In our case it is used to dynamically manage the metric-based record management in PeakDNS.
 
 \subsection{Terminology}
 \subsubsection{Cluster}
@@ -225,6 +236,10 @@ In our case it is used to dynamically manage the load-based record management in
 \subsubsection{Pod}
     A pod is a unit that usually contains one container, but can contain multiple containers that are deployed together.
     In our architecture we follow a strict separation of concerns resulting in as few containers per pod as possible.
+\subsubsection{Metrics-Based Record Management}
+    Metrics-based record management is a system where DNS records are managed based on the metrics of the services they point to.
+    This allows for dynamic load balancing and fault tolerance based on the performance of the services. Metrics-Based record management
+    allows for arbitrary metrics to be used for managing the DNS records, in our case we use CPU, memory and network metrics.
 
 \section{System Design}
 \subsection{PEAK Architectural Overview}
@@ -326,7 +341,7 @@ All JWTs have an expiration time and the authentication service is the only serv
 issue a new expiration time for a JWT.
 Other services can append claims to the JWT and re-sign them, but they cannot change the expiration time.
 An example of this can be seen in \textit{Figure \ref{fig:JWTreq}} where the client requests a video claim from the video service,
-so that it can prove ownership of the video when creating a new post.
+so that it can prove ownership of a video to the video service.
 
 
 \begin{figure}[h]
@@ -386,6 +401,34 @@ so that it can prove ownership of the video when creating a new post.
     \caption{Timeline of two services passing data to each other using JSON Web Tokens and the client as an intermediary.}
     \label{fig:JWTreq}
 \end{figure}
+
+\subsubsection{Metric-Based record management}
+The cluster-level DNS server uses Prometheus to monitor the metrics of the micro-clusters it is responsible for.
+It prompts the Prometheus server with dynamic PromQL queries, the following is an example of a PromQL query that could be used:
+\scriptsize
+\begin{verbatim}
+sum(
+    nginx_connections_active{container="nginx-exporter", namespace="%namespace%", pod="%pod-name%"}
+) +
+sum(
+    rate(container_cpu_usage_seconds_total{namespace="%namespace%", pod="%pod-name%"}[5m])
+) +
+sum(
+    container_memory_working_set_bytes{namespace="%namespace%", pod="%pod-name%"} / 1024 / 1024
+)
+\end{verbatim}
+\normalsize
+Note that the namespace and pod-names are placeholders that are replaced with actual values during runtime.
+This enables PeakDNS to dynamically prompt Prometheus for the metrics of single pods in the micro-cluster.
+\\
+\\
+PeakDNS implements two different modes for metric-based record management:
+\begin{itemize}
+    \item \textbf{Round-robin} - The DNS server returns all the IP addresses of the micro-cluster and removes the IP address with a metric that exceeds 
+    a threshold calculated from the average metrics of the micro-cluster.
+    \item \textbf{Single Best} - The DNS server returns the IP address of the pod with the lowest metric.
+\end{itemize}
+
 
 \begin{figure}[h]
     \begin{tikzpicture}
