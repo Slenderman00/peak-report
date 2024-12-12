@@ -129,15 +129,15 @@ DNS records are used to provide information about a domain or hostname.
     \item TXT (Text) - Provides arbitrary text data.
 \end{itemize}
 
-\subsection{Source of Authority}
+\subsubsection{Source of Authority}
 The Source of Authority (SOA) record is a type of DNS record that provides authoritative information about a DNS zone.
 In our case the SOA record is used to point DNS clients to the different cluster-level DNS servers that manage service discoverability.
 
 \subsubsection{Time to Live}
 Each DNS record has a Time to Live (TTL) value that specifies how long the record should be cached.
-By keeping strict control over the records path of authority, we can ensure that changes to the DNS records propagate quickly.
+By keeping strict control over the records path of authority and low TTLs, we can ensure that changes to the DNS records propagate quickly.
 
-\subsection{Records with multiple answers}
+\subsection{Multi record resolution}
 DNS clients support multiple record resolution, which allows multiple records to be returned for a single query.
 This feature is used to provide fault tolerance and load balancing by returning multiple IP addresses for a single domain.
 It is up to the client to decide which record to use, and most modern clients implement automatic retry behavior.
@@ -175,6 +175,10 @@ As one can test the deployment of services in a Kubernetes cluster without the n
 \subsection{Prometheus}
 Prometheus is an open-source monitoring and alerting toolkit originally built at SoundCloud.
 It uses pull-based metrics collection approach this allows for quicker detection of downed services.
+
+\subsubsection{PromQL}
+Prometheus Query Language (PromQL) is a query language for Prometheus that allows you to select and aggregate time series data.
+In our case it is used to dynamically manage the load-based record management in PeakDNS.
 
 \subsection{Terminology}
 \subsubsection{Cluster}
