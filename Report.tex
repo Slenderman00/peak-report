@@ -178,6 +178,21 @@ This makes large IPv6 allocations available to any organization that can demonst
 JSON Web Tokens (JWT)\cite{jonesJSONWebToken2015} are an open, industry-standard RFC 7519 method for representing claims securely between two parties.
 A claim is a piece of information asserted about a subject, usually consisting of a key-value pair.
 JWTs are signed using a secret or a public/private key pair, which allows the receiving party to verify the integrity of the token.
+\subsubsection{JWT Structure}
+A JWT consists of three parts separated by dots:
+\begin{itemize}
+    \item Header - Contains the type of the token and the signing algorithm.
+    \item Payload - Contains the claims.
+    \item Signature - Used to verify the integrity of the token.
+\end{itemize}
+The three sections are usually base64 encoded and concatenated with dots to form the JWT.
+For illustration purposes, a JWT might look like this:
+\begin{itemize}
+    \item Header: \texttt{\{"alg": "HS256", "typ": "JWT"\}}
+    \item Body: \texttt{\{"userId": "1234567890", "name": "John Doe", "admin": true, iat: 1516239022, exp: 1516239022\}}
+    \item Signature: \texttt{HMACSHA256(base64UrlEncode(header) + "." + \\ base64UrlEncode(payload), secret)}
+\end{itemize}
+
 
 \subsection{Docker}
 Docker\cite{DockerAcceleratedContainer2022} is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
