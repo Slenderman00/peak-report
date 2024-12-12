@@ -25,5 +25,5 @@
 \contentsline {subsubsection}{\numberline {2.9.5}Metrics-Based Record Management}{8}{subsubsection.2.9.5}%
 \contentsline {section}{\numberline {3}System Design}{9}{section.3}%
 \contentsline {subsection}{\numberline {3.1}PEAK Architectural Overview}{9}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Authentication}{9}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Metric-Based record management}{10}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.1}Authentication}{10}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Metric-Based record management}{11}{subsubsection.3.1.2}%

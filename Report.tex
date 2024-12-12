@@ -288,6 +288,7 @@ In our case each of the cluster-level DNS servers are responsible for micro-clus
 for the application to function. This reduces the need for inter-cluster communication between data centers.
 \\
 \\
+\newpage
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[
@@ -342,7 +343,7 @@ issue a new expiration time for a JWT.
 Other services can append claims to the JWT and re-sign them, but they cannot change the expiration time.
 An example of this can be seen in \textit{Figure \ref{fig:JWTreq}} where the client requests a video claim from the video service,
 so that it can prove ownership of a video to the video service.
-
+\newpage
 
 \begin{figure}[h]
     \begin{tikzpicture}
