@@ -325,7 +325,8 @@ It generates the JSON Web Tokens that are used for service-to-service communicat
 All JWTs have an expiration time and the authentication service is the only service that can
 issue a new expiration time for a JWT.
 Other services can append claims to the JWT and re-sign them, but they cannot change the expiration time.
-An example of this can be seen in \textit{Figure \ref{fig:JWTreq}}.
+An example of this can be seen in \textit{Figure \ref{fig:JWTreq}} where the client requests a video claim from the video service,
+so that it can prove ownership of the video when creating a new post.
 
 
 \begin{figure}[h]
