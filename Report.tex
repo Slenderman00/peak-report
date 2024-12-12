@@ -428,6 +428,42 @@ PeakDNS implements two different modes for metric-based record management:
     a threshold calculated from the average metrics of the micro-cluster.
     \item \textbf{Single Best} - The DNS server returns the IP address of the pod with the lowest metric.
 \end{itemize}
+An illustration of how PeakDNS queries Prometheus for service metrics can be seen in \textit{Figure \ref{fig:prometheus-query}}.
+These metrics are then used to manage the DNS records of the services in the micro-cluster.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance = 2cm,
+        box/.style = {draw, rectangle, minimum width=2.5cm, minimum height=1cm},
+        prombox/.style = {draw, rectangle, minimum width=2.8cm, minimum height=1.2cm},
+        arrow/.style = {->, thick},
+        query/.style = {sloped, above, font=\small}
+    ]
+    
+    % PeakDNS at the top
+    \node[box] (peakdns) at (0,0) {PeakDNS};
+    
+    % Prometheus in the middle
+    \node[prombox] (prometheus) at (0,-2) {Prometheus};
+    
+    % Microservices at the bottom
+    \node[box] (service1) at (-4,-4) {Service 1};
+    \node[box] (service2) at (0,-4) {Service 2};
+    \node[box] (service3) at (4,-4) {Service 3};
+    
+    % Draw arrows from PeakDNS to Prometheus
+    \draw[arrow] (peakdns) -- (prometheus) node[query] {PromQL Queries};
+    
+    % Draw arrows from Prometheus to services
+    \draw[arrow] (prometheus) -- (service1) node[query] {Pull Metrics};
+    \draw[arrow] (prometheus) -- (service2) node[query] {Pull Metrics};
+    \draw[arrow] (prometheus) -- (service3) node[query] {Pull Metrics};
+    
+    \end{tikzpicture}
+    \caption{PeakDNS querying Prometheus for service metrics}
+    \label{fig:prometheus-query}
+\end{figure}
 
 
 \begin{figure}[h]
