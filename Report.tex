@@ -14,6 +14,7 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{xurl}
 \usepackage{tikz}
+\usepackage{./timing-diagrams}
 \usetikzlibrary{calc}
 \setcounter{biburlnumpenalty}{100}
 \setcounter{biburlucpenalty}{100}
@@ -317,6 +318,141 @@ for the application to function. This reduces the need for inter-cluster communi
     \caption{Direct DNS to Micro Cluster Mapping}
     \label{fig:service-dns-mapping}
 \end{figure}
+
+\subsubsection{Authentication}
+The authentication service is responsible for registering and authenticating users.
+It generates the JSON Web Tokens that are used for service-to-service communication. 
+All JWTs have an expiration time and the authentication service is the only service that can
+issue a new expiration time for a JWT.
+Other services can append claims to the JWT and re-sign them, but they cannot change the expiration time.
+An example of this can be seen in \textit{Figure \ref{fig:JWTreq}}.
+
+
+\begin{figure}[h]
+    \begin{tikzpicture}
+        \tline{video}{4};
+        \ttimeline{video}{10};
+        \tcaption{video}{Video service};
+        \ttick{video};
+        \tskip{video}{1};
+        \tbox{video}{2}{Videos};
+
+        \tline{client}{2};
+        \ttimeline{client}{10};
+        \tcaption{client}{Client};
+        \ttick{client};
+        \tskip{client}{0};
+        \tbox{client}{1}{SPA};
+
+        \tskip{client}{0};
+        \tskip{video}{-1};
+        \ttextarrowU{video}{
+            \begin{tabular}{c}
+                Requests video claim / Response JWT
+            \end{tabular}
+        };
+        \tskip{video}{-1};
+        \tarrowLU{client}{video}{};
+
+        \tskip{client}{2};
+        \tskip{video}{2};
+        \tarrowUL{video}{client}{};
+
+        \ttick{client};
+        \tskip{client}{0};
+        \tbox{client}{1}{SPA};
+        \ttick{client};
+        \tskip{client}{2};
+        \tbox{client}{3}{Rendering};
+
+        \tline{post}{0};
+        \ttimeline{post}{10};
+        \tcaption{post}{Post service};
+        \ttick{post};
+        \tskip{post}{4};
+        \tbox{post}{2}{Posts};
+
+        \tskip{client}{-5};
+        \tskip{post}{-2};
+        \tarrowUL{client}{post}{};
+        \tskip{client}{2};
+        \tskip{post}{2};
+        \tarrowLU{post}{client}{};
+
+
+
+    \end{tikzpicture}
+    \caption{Timeline of two services passing data to each other using JSON Web Tokens and the client as an intermediary.}
+    \label{fig:JWTreq}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{tikzpicture}
+        \tline{web}{4};
+        \ttimeline{web}{10};
+        \tcaption{web}{Web Server};
+        \ttick{web};
+        \tskip{web}{5};
+        \tbox{web}{1}{SPA};
+
+        \tline{client}{2};
+        \ttimeline{client}{10};
+        \tcaption{client}{Client};
+        \ttick{client};
+        \tskip{client}{0};
+        \tbox{client}{1}{DNS};
+
+        \ttick{client};
+        \tskip{client}{3};
+        \tbox{client}{1}{WEB};
+        \ttick{client};
+        \tskip{client}{1};
+        \tbox{client}{3}{Rendering};
+
+
+        \tline{dns}{0};
+        \ttimeline{dns}{10};
+        \tcaption{dns}{PeakDNS};
+        \ttick{dns};
+        \tskip{dns}{1};
+        \tbox{dns}{3}{DNS Table};
+
+        \tskip{client}{-8};
+        \tskip{dns}{-3};
+        \ttextarrowU{client}{
+            \begin{tabular}{c}
+                DNS Request
+            \end{tabular}
+        };
+        \tarrowUL{client}{dns}{};
+
+        \tskip{client}{3};
+        \tskip{dns}{3};
+        \ttextarrowU{client}{
+            \begin{tabular}{c}
+                DNS Response
+            \end{tabular}
+        };
+        \tarrowLU{dns}{client}{};
+
+        \tskip{client}{1};
+        \tskip{web}{-1};
+        \ttextarrowU{web}{
+            \begin{tabular}{c}
+                HTTPS Request
+            \end{tabular}
+        };
+        \tarrowLU{client}{web}{};
+
+        \tskip{web}{1};
+        \tskip{client}{1};
+        \tarrowUL{web}{client}{};
+
+    \end{tikzpicture}
+    \caption{Timeline of a web request with DNS lookup.}
+    \label{fig:TL}
+\end{figure}
+
 \pagebreak
 \printbibliography
 \license
