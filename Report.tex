@@ -230,7 +230,7 @@ In our case it is used to dynamically manage the load-based record management in
 The system consists of a main SOA DNS server that delegates to multiple cluster-level DNS servers.
 Each cluster-level DNS server is responsible for a whole set of services, and the SOA DNS server delegates to them using NS records.
 This creates a hierarchical system where the SOA DNS server is the top-level authority, and the cluster-level DNS servers are responsible for service discoverability.
-This can be seen in Figure \ref{fig:dns-hierarchy}.
+This can be seen in \textit{Figure \ref{fig:dns-hierarchy}}.
 \\
 \\
 \begin{figure}[h]
@@ -267,7 +267,7 @@ This can be seen in Figure \ref{fig:dns-hierarchy}.
 \\
 \\
 Each cluster-level DNS server is responsible for a set of micro clusters, and points to them using AAAA records.
-This creates a direct mapping from DNS to services, as seen in Figure \ref{fig:service-dns-mapping}.
+This creates a direct mapping from DNS to services, as seen in \textit{Figure \ref{fig:service-dns-mapping}}.
 In our case each of the cluster-level DNS servers are responsible for micro-clusters of all the services required 
 for the application to function. This reduces the need for inter-cluster communication between data centers.
 \\
