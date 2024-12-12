@@ -146,11 +146,28 @@ It is up to the client to decide which record to use, and most modern clients im
 Internet Protocol version 6 (IPv6)\cite{hindenInternetProtocolVersion1998} is the most recent version of the Internet Protocol (IP)
 \subsubsection{IPv6 Address Structure}
 IPv6 addresses are 128 bits long and are represented as eight groups of four hexadecimal digits separated by colons.
+For example, a typical IPv6 address might look like this:
+\begin{verbatim}
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+\end{verbatim}
+To make these addresses more manageable, leading zeros within a group can be omitted, 
+and one consecutive sequence of zero groups can be replaced with a double colon (::), giving us:
+\begin{verbatim}
+2001:db8:85a3::8a2e:370:7334
+\end{verbatim}
 This introduces an IP space that contains $2^{128}$ (approximately 340 undecillion, or $3.4 \times 10^{38}$) addresses, 
 eliminating the need for network address translation. 
 To put this in perspective, the entire IPv4 address space ($2^{32}$ addresses) could fit into the IPv6 address space $2^{96}$ times 
 (approximately 79 octillion times).
-In other words, we could replicate the entire Internet's IPv4 address space \\79,228,162,514,264,337,593,543,950,336 times within IPv6's address space.
+In other words, we could replicate the entire Internet's IPv4 address space 79,228,162,514,264,337,593,543,950,336 times within IPv6's address space.
+
+\noindent For the purpose of network allocation, IPv6 addresses are commonly divided into prefixes using CIDR notation. 
+For example, in a /48 allocation (as mentioned in the RIPE allocation policy):
+\begin{verbatim}
+2001:db8:85a3::/48
+\end{verbatim}
+This prefix reserves the first 48 bits (the first three groups) for network identification, 
+leaving the remaining 80 bits for subnetting and host addressing within the organization's network.
 \subsubsection{IPv6 Address Allocation policy}
 RIPE NCC's allocation policy provides Local Internet Registries with /32 up to /29 blocks, each containing over 500,000 /48 networks.
 To qualify for these allocations the Local Internet registry 

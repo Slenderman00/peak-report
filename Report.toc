@@ -12,14 +12,14 @@
 \contentsline {subsubsection}{\numberline {2.5.2}IPv6 Address Allocation policy}{6}{subsubsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.6}JSON Web Tokens}{6}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Docker}{6}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Kubernetes}{6}{subsection.2.8}%
-\contentsline {subsubsection}{\numberline {2.8.1}Minikube}{6}{subsubsection.2.8.1}%
-\contentsline {subsection}{\numberline {2.9}Prometheus}{6}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.8}Kubernetes}{7}{subsection.2.8}%
+\contentsline {subsubsection}{\numberline {2.8.1}Minikube}{7}{subsubsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.9}Prometheus}{7}{subsection.2.9}%
 \contentsline {subsubsection}{\numberline {2.9.1}PromQL}{7}{subsubsection.2.9.1}%
 \contentsline {subsection}{\numberline {2.10}Terminology}{7}{subsection.2.10}%
 \contentsline {subsubsection}{\numberline {2.10.1}Cluster}{7}{subsubsection.2.10.1}%
 \contentsline {subsubsection}{\numberline {2.10.2}Micro-cluster}{7}{subsubsection.2.10.2}%
-\contentsline {subsubsection}{\numberline {2.10.3}Cluster-level DNS server}{7}{subsubsection.2.10.3}%
-\contentsline {subsubsection}{\numberline {2.10.4}Pod}{7}{subsubsection.2.10.4}%
-\contentsline {section}{\numberline {3}System Design}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}PEAK Architectural Overview}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {2.10.3}Cluster-level DNS server}{8}{subsubsection.2.10.3}%
+\contentsline {subsubsection}{\numberline {2.10.4}Pod}{8}{subsubsection.2.10.4}%
+\contentsline {section}{\numberline {3}System Design}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}PEAK Architectural Overview}{8}{subsection.3.1}%
