@@ -546,6 +546,21 @@ However, due to the significant departure from the current paradigm, this approa
     \label{fig:JWTreq}
 \end{figure}
 
+\subsubsection{Cluster-Level DDoS mitigation}
+\textit{Note: This system has not been implemented and is purely theoretical.}
+In traditional DDoS attacks the proxy servers are almost always targeted, this is due to purely practical reasons.
+The proxy servers are the only exposed servers in the system and are therefore the easiest to target. Due to the 
+PEAK architecture's distributed nature we can take a different approach to DDoS mitigation.
+\begin{enumerate}
+    \item \textbf{Report the attack} - Upon attack detection, malevolent IP addresses are reported to the cluster-level DNS server using the Prometheus API.
+    \item \textbf{Address removal} - The pods affected pods disable their network interfaces.
+    \item \textbf{DNS Resolution blocking} - PeakDNS blocks the IP addresses belonging to the attackers.
+    \item \textbf{Address reacquisition} - Each pod re-enables their network interfaces while also requesting new IP addresses from the DHCP server.
+    \item \textbf{Metrics-based record management} - PeakDNS updates the DNS records with the new IP addresses.
+    \item \textbf{The attack is mitigated} - The attack is mitigated by blocking the malevolent IP addresses from reading the new DNS records.
+\end{enumerate}
+
+
 \subsection{Reference Implementation Overview}
 Our reference implementation is named Peak and consists of seven different services 
 as seen in \textit{Figure \ref{fig:service-dns-mapping}}. Peak is a video sharing platform

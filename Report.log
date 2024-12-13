@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.2)  13 DEC 2024 00:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.2)  13 DEC 2024 01:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -834,23 +834,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 363--369
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12]
-Overfull \hbox (80.25873pt too wide) in paragraph at lines 573--585
+[11] [12] [13]
+Overfull \hbox (80.25873pt too wide) in paragraph at lines 588--600
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13]
-Overfull \hbox (57.24474pt too wide) in paragraph at lines 659--660
+[14]
+Overfull \hbox (57.24474pt too wide) in paragraph at lines 674--675
 [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14] [15] [16] (./Report.aux)
+[15] [16] (./Report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -863,24 +857,24 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: CC327F8820888C42195569B8C10519E5;4958.
+(rerunfilecheck)             Checksum: 61605FD6B72233CD36BE999440BB2692;5177.
 Package logreq Info: Writing requests to 'Report.run.xml'.
 \openout1 = `Report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30826 strings out of 476076
- 605331 string characters out of 5793775
- 1953187 words of memory out of 5000000
- 52427 multiletter control sequences out of 15000+600000
+ 30838 strings out of 476076
+ 605515 string characters out of 5793775
+ 1952187 words of memory out of 5000000
+ 52432 multiletter control sequences out of 15000+600000
  565984 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,10n,93p,735b,1267s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,10n,93p,735b,1238s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Report.pdf (16 pages, 193483 bytes).
+Output written on Report.pdf (16 pages, 194947 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
- 327 compressed objects within 4 object streams
- 67 named destinations out of 1000 (max. 500000)
- 379 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 340 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 387 words of extra memory for PDF output out of 10000 (max. 10000000)
 
