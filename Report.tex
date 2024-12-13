@@ -557,7 +557,7 @@ PEAK architecture's distributed nature we can take a different approach to DDoS 
     \item \textbf{DNS Resolution blocking} - PeakDNS blocks the IP addresses belonging to the attackers.
     \item \textbf{Address reacquisition} - Each pod re-enables their network interfaces while also requesting new IP addresses from the DHCP server (or similar).
     \item \textbf{Metrics-based record management} - PeakDNS updates the DNS records with the new IP addresses.
-    \item \textbf{The attack is mitigated} - The attack is mitigated by blocking the malevolent IP addresses from reading the new DNS records.
+    \item \textbf{The attack is mitigated} - The attack targets dead IP addresses and the system is back to normal.
 \end{enumerate}
 
 
