@@ -14,7 +14,7 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{xurl}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,positioning,fit}
+\usetikzlibrary{shapes.geometric,positioning,fit,backgrounds}
 \usepackage{./timing-diagrams}
 \usetikzlibrary{calc}
 \setcounter{biburlnumpenalty}{100}
@@ -548,7 +548,7 @@ However, due to the significant departure from the current paradigm, this approa
 \end{figure}
 
 \subsubsection{Cluster-Level DDoS mitigation "The rug-pull"}
-\textit{Note: This system has not been implemented and is purely theoretical.}
+\textit{Note: This system has not been implemented and is purely theoretical.} \\
 In traditional DDoS attacks the proxy servers are almost always targeted, this is due to purely practical reasons.
 The proxy servers are the only exposed servers in the system and are therefore the easiest to target. Due to the 
 PEAK architecture's distributed nature we can take a different approach to DDoS mitigation.
@@ -560,6 +560,11 @@ PEAK architecture's distributed nature we can take a different approach to DDoS 
     \item \textbf{Metrics-based record management} - PeakDNS updates the DNS records with the new IP addresses.
     \item \textbf{The attack is mitigated} - The attack targets dead IP addresses and the system is back to normal.
 \end{enumerate}
+As most of the ideas presented in this paper, this system is a radical departure from the current DDoS mitigation strategies.
+The primary goal of the "rug-pull" is service survival. During a DDoS attack the attacker's goal is to overwhelm the services.
+Therefor, it becomes acceptable to abruptly disable the affected services in the hope of a quick recovery. This involves
+dropping all legitimate traffic to the affected services, while prioritizing speed of change over service availability.
+
 
 
 \subsection{Reference Implementation Overview}
@@ -571,6 +576,17 @@ Our hope is that this section will demonstrate how conventional architectural co
 still apply in the PEAK architecture. The reference implementation only implements
 PEAK at the cluster level, and does not implement the SOA DNS server.
 
+\subsubsection{Service Overview}
+A full diagram of the micro-clusters in the Peak reference implementation
+can be seen in \textit{Figure \ref{fig:service-diagram}}.
+
+\begin{figure}[h]
+    \includegraphics[width=1\textwidth]{service-diagram.drawio.png}
+    \caption{A diagram of the services in the Peak reference implementation. Each of the boxes in the cluster represents a micro-cluster containing multiple instances of the service.}
+    \label{fig:service-diagram}
+\end{figure}
+
+\newpage
 
 \subsubsection{Authentication: self.auth.peak}
 This is our authentication service, it is written to be as simple as possible.
