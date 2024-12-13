@@ -119,13 +119,6 @@ and PeakDNS for service discoverability and metric-based record management.
 Réseaux IP Européens (RIPE)\cite{WelcomeRIPERIPE2024} is a regional internet registry (RIR) 
 that allocates and registers IP addresses in Europe, the Middle East, and parts of Central Asia.
 
-\subsection{PeakDNS}
-PeakDNS\cite{heimonenPeakDNS2024} is a purpose-built DNS server that manages service discoverability and 
-metric-based record management for the Peak distributed system.
-It is designed to integrate with Prometheus for monitoring and alerting.
-and Kubernetes for container discoverability.
-Note that PeakDNS originally was named GoodDNS.
-
 \subsection{Domain Name System}
 The Domain Name System (DNS)\cite{DomainNamesImplementation1987} is a hierarchical and decentralized naming system for computers, 
 services, or other resources connected to the Internet or a private network.
@@ -155,6 +148,13 @@ By keeping strict control over the records path of authority and low TTLs, we ca
 DNS clients support multiple record resolution, which allows multiple records to be returned for a single query.
 This feature is used to provide fault tolerance and load balancing by returning multiple IP addresses for a single domain.
 It is up to the client to decide which record to use, and most modern clients implement automatic retry behavior.
+
+\subsection{PeakDNS}
+PeakDNS\cite{heimonenPeakDNS2024} is a purpose-built DNS server that manages service discoverability and 
+metric-based record management for the Peak distributed system.
+It is designed to integrate with Prometheus for monitoring and alerting.
+and Kubernetes for container discoverability.
+Note that PeakDNS originally was named GoodDNS.
 
 \subsection{IPv6}
 Internet Protocol version 6 (IPv6)\cite{hindenInternetProtocolVersion1998} is the most recent version of the Internet Protocol (IP)
