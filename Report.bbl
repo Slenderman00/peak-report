@@ -132,6 +132,54 @@
       \verb /home/joar/Zotero/storage/A85SBXP9/Hinden and Deering - 1998 - Internet Protocol, Version 6 (IPv6) Specification.pdf
       \endverb
     \endentry
+    \entry{hongDNSbasedLoadBalancing2006}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=452f1fc2a81688d8c5b5ba89c8b40e92}{%
+           family={Hong},
+           familyi={H\bibinitperiod},
+           given={Y.S.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b69619e89267b827130480c29f29978e}{%
+           family={No},
+           familyi={N\bibinitperiod},
+           given={J.H.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bd2ad20e5878667a37d960d3f31da518}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={S.Y.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{86d7fac7c76a08fcddf90139fa0c398e}
+      \strng{fullhash}{86d7fac7c76a08fcddf90139fa0c398e}
+      \strng{bibnamehash}{86d7fac7c76a08fcddf90139fa0c398e}
+      \strng{authorbibnamehash}{86d7fac7c76a08fcddf90139fa0c398e}
+      \strng{authornamehash}{86d7fac7c76a08fcddf90139fa0c398e}
+      \strng{authorfullhash}{86d7fac7c76a08fcddf90139fa0c398e}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A cluster Web-server system can be deployed to support high request rates to Web application server (WAS) in Internet-banking. The domain name system (DNS) servers dispatch the client requests among the Web-servers through the URL-name to IP-address mapping mechanism. In this paper, we propose a cluster Web-server system arranged in the multiple logical ring connections, in which the DNS is integrated with an adaptive load balancing algorithm and evaluate the performance of the proposed distributed Web-server system. We show the performance measurements for the proposed system}
+      \field{booktitle}{The {{Fourth IEEE Workshop}} on {{Software Technologies}} for {{Future Embedded}} and {{Ubiquitous Systems}}, and the {{Second International Workshop}} on {{Collaborative Computing}}, {{Integration}}, and {{Assurance}} ({{SEUS-WCCIA}}'06)}
+      \field{month}{4}
+      \field{title}{{{DNS-based}} Load Balancing in Distributed {{Web-server}} Systems}
+      \field{urlday}{13}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2006}
+      \field{urldateera}{ce}
+      \field{pages}{4 pp.-}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1109/SEUS-WCCIA.2006.23
+      \endverb
+      \verb{file}
+      \verb /home/joar/Zotero/storage/PLNVCMVC/1611743.html
+      \endverb
+      \keyw{Broadcasting,Clustering algorithms,Collaborative software,Conferences,Dispatching,Distributed Web-server system,DNS-based dispatcher.,Internet,Load balancing,Load management,Measurement,Scheduling,Web server,Web-server cluster}
+      \warn{\item Range field 'pages' in entry 'hongDNSbasedLoadBalancing2006' is malformed, falling back to literal}
+    \endentry
     \entry{IPv6AddressAllocation}{misc}{}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
@@ -197,6 +245,52 @@
       \verb /home/joar/Zotero/storage/AVECKBRY/Jones et al. - 2015 - JSON Web Token (JWT).pdf
       \endverb
     \endentry
+    \entry{moonDynamicLoadBalancing2005}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=ddde06d50f70cb3b725130fd7997f6ad}{%
+           family={Moon},
+           familyi={M\bibinitperiod},
+           given={Jong-Bae},
+           giveni={J\bibinithyphendelim B\bibinitperiod}}}%
+        {{hash=34839780eae3f263f38c76ff0f783fa5}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Myung-Ho},
+           giveni={M\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer, Berlin, Heidelberg}%
+      }
+      \strng{namehash}{765f57a3682f4f6508d5d4c4878ee451}
+      \strng{fullhash}{765f57a3682f4f6508d5d4c4878ee451}
+      \strng{bibnamehash}{765f57a3682f4f6508d5d4c4878ee451}
+      \strng{authorbibnamehash}{765f57a3682f4f6508d5d4c4878ee451}
+      \strng{authornamehash}{765f57a3682f4f6508d5d4c4878ee451}
+      \strng{authorfullhash}{765f57a3682f4f6508d5d4c4878ee451}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In most existing distributed Web systems, incoming requests are distributed to servers via Domain Name System (DNS). Although such systems are simple to implement, the address caching mechanism easily results in load unbalancing among servers. Moreover, modi.cation...}
+      \field{booktitle}{E-{{Commerce}} and {{Web Technologies}}}
+      \field{isbn}{978-3-540-31736-4}
+      \field{issn}{1611-3349}
+      \field{langid}{english}
+      \field{title}{Dynamic {{Load Balancing Method Based}} on {{DNS}} for {{Distributed Web Systems}}}
+      \field{urlday}{13}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \field{pages}{238\bibrangedash 247}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/11545163_24
+      \endverb
+      \verb{file}
+      \verb /home/joar/Zotero/storage/XJEZ32MI/Moon and Kim - 2005 - Dynamic Load Balancing Method Based on DNS for Dis.pdf
+      \endverb
+    \endentry
     \entry{ProductionGradeContainerOrchestration}{misc}{}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
@@ -232,6 +326,54 @@
       \verb{file}
       \verb /home/joar/Zotero/storage/GWUJ3CDM/www.ripe.net.html
       \endverb
+    \endentry
+    \entry{xuLoadBalancingDNSbased2004}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=c63425016c82ca0d9c4c5449e01ae36a}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Zhong},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=a573ebfc66ebd362d3a5d03afce51cde}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Rong},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1eeb88def5028aeb988920f42f19e06d}{%
+           family={Bhuyan},
+           familyi={B\bibinitperiod},
+           given={L.N.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{6f5a54c9fe7786df233ac3ea7e50dd82}
+      \strng{fullhash}{6f5a54c9fe7786df233ac3ea7e50dd82}
+      \strng{bibnamehash}{6f5a54c9fe7786df233ac3ea7e50dd82}
+      \strng{authorbibnamehash}{6f5a54c9fe7786df233ac3ea7e50dd82}
+      \strng{authornamehash}{6f5a54c9fe7786df233ac3ea7e50dd82}
+      \strng{authorfullhash}{6f5a54c9fe7786df233ac3ea7e50dd82}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The explosion of WWW traffic has triggered great interest in distributed Web server systems. Among various distributed Web server architectures, the DNS-based distributed system is a promising solution in terms of performance, scalability and availability. DNS (domain name server) name caching has significant effects on the load balance of distributed Web server systems, due to the traffic skewness it causes. Also, there is page caching along whole paths between clients and Web servers, and page caching schemes could affect the system load balancing a lot. In this paper, we examine various caching issues, including the load balancing algorithms of the DNS, the locations of caches, and the page caching policies, for the DNS-based Web server system. We use stochastic processes to model the Web traffic, and compare the load balance performance of these algorithms and policies based on simulation results. We found that, the DNS load balancing algorithm, which takes into account both client domain information and server load information, could yield best load balance performance among various algorithms, and a server-side cache with the policy which only caches popular Web pages could significantly improve both the cache hit ratio and the load balance.}
+      \field{booktitle}{Proceedings. {{Tenth International Conference}} on {{Parallel}} and {{Distributed Systems}}, 2004. {{ICPADS}} 2004.}
+      \field{issn}{1521-9097}
+      \field{month}{7}
+      \field{title}{Load Balancing of {{DNS-based}} Distributed {{Web}} Server Systems with Page Caching}
+      \field{urlday}{13}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2004}
+      \field{urldateera}{ce}
+      \field{pages}{587\bibrangedash 594}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/ICPADS.2004.1316141
+      \endverb
+      \verb{file}
+      \verb /home/joar/Zotero/storage/8ETZDX8A/Xu et al. - 2004 - Load balancing of DNS-based distributed Web server.pdf;/home/joar/Zotero/storage/PXKT5HNQ/1316141.html
+      \endverb
+      \keyw{Availability,Explosions,Load management,Scalability,Service oriented architecture,Stochastic processes,Traffic control,Web pages,Web server,World Wide Web}
     \endentry
   \enddatalist
 \endrefsection

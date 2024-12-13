@@ -101,6 +101,11 @@ Current deployments typically rely on multiple layers of proxies for routing, di
 a potential point of failure.
 \\
 \\
+Our development philosophy focuses on simplification through the creative use of existing battle-tested technologies, rather than introducing 
+more complexity and layers of abstraction into already bloated systems. We believe that simplicity is the key to creating robust and scalable 
+distributed systems. PEAK is developed by looking at established distributed system patterns through the lens of simplicity.
+\\
+\\
 With the widespread adoption of IPv6, we have entered a new era in distributed systems architecture. RIPE NCC's allocation policy
 provides Local Internet Registries with /29 blocks, each containing over 500,000 /48 networks. This abundance of addresses eliminates
 the need for network address translation and, by extension, many of the proxy-based patterns that evolved around address scarcity.
@@ -116,7 +121,7 @@ and PeakDNS for service discoverability and metric-based record management.
 \subsection{Scope and Limitations}
 This paper focuses on the architectural design of PEAK, and the implementation of Peak and PeakDNS.
 Due to budget constraints, no formal performance testing has been conducted, and the system has not been deployed in a production environment.
-We feel as the theoretical foundation of the PEAK architecture is solid enough for the paper to stand on its own merit even without performance testing.
+We feel that the theoretical foundation of the PEAK architecture is solid enough for the paper to stand on its own merits even without performance testing.
 
 \section{Technical background}
 \subsection{Réseaux IP Européens (RIPE)}
@@ -247,6 +252,34 @@ In our case it is used to dynamically manage the metric-based record management 
     This allows for dynamic load balancing and fault tolerance based on the performance of the services. Metrics-Based record management
     allows for arbitrary metrics to be used for managing the DNS records, in our case we use CPU, memory and network metrics.
 
+\section{Related Work}
+While PEAK might seem entirely unique at a glance, it is not. The idea of using DNS for load balancing is not a new one.
+The following papers describes systems for DNS based load balancing.
+\\
+\\
+"Load balancing of DNS-based distributed Web server systems with page caching"\cite{xuLoadBalancingDNSbased2004} by Zhong Xu, Rong Huang and Laxmi N. Bhuyan published in 2004
+Examines "various caching issues, in-cluding the load balancing algorithms of the DNS, the lo-
+cations of caches, and the page caching policies, for the DNS-based web server system."
+\\
+\\
+"Dynamic Load Balancing Method Based on DNS for Distributed Web Systems"\cite{moonDynamicLoadBalancing2005} 
+by Jong-Bae Moon and Myhung-Ho Kim published in 2005
+proposes a similar method as this paper "The proposed
+method performs effective load balancing without modification of the
+DNS. In this method, a server is dynamically added to or removed from
+the DNS list according to the server’s load."
+\\
+\\
+"DNS-Based Load Balancing in Distributed Web-server Systems"\cite{hongDNSbasedLoadBalancing2006} by Y. S. Hong, J. H. No, and SY. Y. Kim
+published in 2006 describes "A cluster Web-server system can be deployed to support high request rates to Web application server (WAS) in Internet-banking. 
+The domain name system (DNS) servers dispatch the client requests among the Web-servers through the URL-name to IP-address mapping mechanism."
+\\
+\\
+While all the above papers has a focus on optimizing DNS-based load balancing for distributed systems.
+They do not take into account the address scarcity that has been prevalent since the mid 2000s.
+And choose to focus on the technical details of DNS load balancing instead of the larger architectural
+opportunities this approach presents.
+
 \section{System Design}
 \subsection{PEAK Architectural Overview}
 The system consists of a main SOA DNS server that delegates to multiple cluster-level DNS servers.
@@ -295,7 +328,6 @@ In our case each of the cluster-level DNS servers are responsible for micro-clus
 for the application to function. This reduces the need for inter-cluster communication between data centers.
 \\
 \\
-\newpage
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[
@@ -488,8 +520,13 @@ To reduce the complexities of inter-service communication, we have devised a sys
 This allows for service-to-service communication that always scales 1:1 with the number of users.  
 This approach greatly simplifies the inter-service communication and is a radical departure from the current cloud computing paradigm.
 \textit{Figure \ref{fig:JWTreq}} illustrates the timeline of two services passing data to each other using JSON Web Tokens and the client as an intermediary.
-However, due to the significant departure from the current paradigm, this approach requires services to be designed with this in mind.
-
+\\
+\\
+Client-mediated communication is perfect for systems built using stateless microservices. 
+This means that the services do not store any state related to the user or otherwise.
+All information needed by a service is fetched at request time from the other services in a conventional architecture.
+By bundling this information with user requests, the client can act as an intermediary between services without 
+adding to the complexity of the system.
 
 \newpage
 
@@ -556,6 +593,7 @@ However, due to the significant departure from the current paradigm, this approa
 In traditional DDoS attacks the proxy servers are almost always targeted, this is due to purely practical reasons.
 The proxy servers are the only exposed servers in the system and are therefore the easiest to target. Due to the 
 PEAK architecture's distributed nature we can take a different approach to DDoS mitigation.
+An illustration of the following steps can be seen in \textit{Figure \ref{fig:rug-pull}}.
 \begin{enumerate}
     \item \textbf{Report the attack} - Upon attack detection, malevolent IP addresses are reported to the cluster-level DNS server using the Prometheus API.
     \item \textbf{Address removal} - The affected pods disable their network interfaces.
@@ -566,10 +604,14 @@ PEAK architecture's distributed nature we can take a different approach to DDoS 
 \end{enumerate}
 As most of the ideas presented in this paper, this system is a radical departure from the current DDoS mitigation strategies.
 The primary goal of the "rug-pull" is service survival. During a DDoS attack the attacker's goal is to overwhelm the services.
-Therefor, it becomes acceptable to abruptly disable the affected services in the hope of a quick recovery. This involves
+Therefor, it becomes acceptable to abruptly disconnect the affected services in the hope of a quick recovery. This involves
 dropping all legitimate traffic to the affected services, while prioritizing speed of change over service availability.
 
-
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{bad-actors.drawio.png}
+    \caption{An illustration of the "rug-pull" DDoS mitigation strategy.}
+    \label{fig:rug-pull}
+\end{figure}
 
 \subsection{Reference Implementation Overview}
 Our reference implementation is named Peak and consists of seven different services 
@@ -619,8 +661,6 @@ If these checks are missing the system is vulnerable to a range of attacks.
     \end{tabular}
     \label{tab:user-data}
 \end{table}
-
-\newpage
 
 \subsubsection{Video Services}
 The video system consists of four services:
@@ -697,7 +737,29 @@ All the services share the same network file system (NFS) for storing videos.
     \label{fig:video-service-overview}
 \end{figure}
 
+\newpage
+
+\section{Post Services}
+There are two post services in the Peak reference implementation:
+\begin{itemize}
+    \item \textbf{read.posts.peak} - This service is responsible for reading posts
+    \item \textbf{write.posts.peak} - This service is responsible for writing posts
+\end{itemize}
+The post services implement client-mediated communication, as seen in \textit{Figure \ref{fig:JWTreq}}.
+After a video has been encoded the client requests video.status.peak to append a new claim to the JWT 
+containing a list of all the users uploaded videos. This JWT is then appended to the request to the post services.
+The post service checks what video is in the post request and compares its identification to the list of uploaded videos in the JWT.
+This ensures that only the user that uploaded the video can post it.
+
+\section{Future work}
+\begin{itemize}
+    \item \textbf{Performance testing} - The system has not been performance tested, and it is unclear how it will perform under load.
+    \item \textbf{Production deployment} - The system has not been deployed in a production environment, and it is unclear how it will perform in a real-world scenario.
+    \item \textbf{Cluster-Level DDoS mitigation} - The "Rug-Pull" warrant its own paper.
+\end{itemize}
+
 \pagebreak
+\addcontentsline{toc}{section}{References}
 \printbibliography
 \license
 \end{document}

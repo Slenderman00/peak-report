@@ -345,6 +345,10 @@ INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
+INPUT ./images/bad-actors.drawio.png
+INPUT ./images/bad-actors.drawio.png
+INPUT ./images/bad-actors.drawio.png
+INPUT ./images/bad-actors.drawio.png
 INPUT ./images/service-diagram.drawio.png
 INPUT ./images/service-diagram.drawio.png
 INPUT ./images/service-diagram.drawio.png
