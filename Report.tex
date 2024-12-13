@@ -226,19 +226,19 @@ It uses pull-based metrics collection approach this allows for quicker detection
 Prometheus Query Language (PromQL) is a query language for Prometheus that allows you to select and aggregate time series data.
 In our case it is used to dynamically manage the metric-based record management in PeakDNS.
 
-\subsection{Terminology}
-\subsubsection{Cluster}
+\section{Terminology}
+\subsection{Cluster}
     A cluster is a group of services that are deployed together and share the same DNS server.
     These clusters are usually located in the same data center or region.
-\subsubsection{Micro-cluster}
+\subsection{Micro-cluster}
     A micro-cluster is a group of services that are deployed under the same cluster and shares the same DNS record.
     These are usually referred to as deployments in Kubernetes.
-\subsubsection{Cluster-level DNS server}
+\subsection{Cluster-level DNS server}
     A cluster-level DNS server is a DNS server that is responsible for a whole set of micro-clusters.
-\subsubsection{Pod}
+\subsection{Pod}
     A pod is a unit that usually contains one container, but can contain multiple containers that are deployed together.
     In our architecture we follow a strict separation of concerns resulting in as few containers per pod as possible.
-\subsubsection{Metrics-Based Record Management}
+\subsection{Metrics-Based Record Management}
     Metrics-based record management is a system where DNS records are managed based on the metrics of the services they point to.
     This allows for dynamic load balancing and fault tolerance based on the performance of the services. Metrics-Based record management
     allows for arbitrary metrics to be used for managing the DNS records, in our case we use CPU, memory and network metrics.
@@ -247,8 +247,9 @@ In our case it is used to dynamically manage the metric-based record management 
 \subsection{PEAK Architectural Overview}
 The system consists of a main SOA DNS server that delegates to multiple cluster-level DNS servers.
 Each cluster-level DNS server is responsible for a whole set of services, and the SOA DNS server delegates to them using NS records.
-This creates a hierarchical system where the SOA DNS server is the top-level authority, and the cluster-level DNS servers are responsible for service discoverability.
-This can be seen in \textit{Figure \ref{fig:dns-hierarchy}}.
+This creates a hierarchical system where the SOA DNS server is the top-level authority, and the cluster-level DNS servers are responsible
+for service discoverability,
+this can be seen in \textit{Figure \ref{fig:dns-hierarchy}}.
 \\
 \\
 \begin{figure}[h]
@@ -546,7 +547,7 @@ However, due to the significant departure from the current paradigm, this approa
     \label{fig:JWTreq}
 \end{figure}
 
-\subsubsection{Cluster-Level DDoS mitigation}
+\subsubsection{Cluster-Level DDoS mitigation "The rug-pull"}
 \textit{Note: This system has not been implemented and is purely theoretical.}
 In traditional DDoS attacks the proxy servers are almost always targeted, this is due to purely practical reasons.
 The proxy servers are the only exposed servers in the system and are therefore the easiest to target. Due to the 
@@ -566,7 +567,7 @@ Our reference implementation is named Peak and consists of seven different servi
 as seen in \textit{Figure \ref{fig:service-dns-mapping}}. Peak is a video sharing platform
 that has been developed in parallel with the PEAK architecture. This section will 
 cover architectural details that are specific to the reference implementation.
-Out hope is that this section will demonstrate how conventional architectural concepts 
+Our hope is that this section will demonstrate how conventional architectural concepts 
 still apply in the PEAK architecture. The reference implementation only implements
 PEAK at the cluster level, and does not implement the SOA DNS server.
 
@@ -610,7 +611,7 @@ The video system consists of four services:
     \item \textbf{encoding service} - This service is responsible for encoding videos
 \end{itemize}
 
-As one can see in \textit{Figure \ref{fig:service-dns-mapping}} the video services looks quite conventional.
+As one can see in \textit{Figure \ref{fig:video-service-overview}} the video services looks quite conventional.
 The only difference from a conventional architecture is that the client communicates directly with each service,
 We have removed the proxy layer that usually would be present in a system like this, and we have also reduced
 inter-service communication to a minimum using only databases and queues for direct inter-service communication.
@@ -673,7 +674,7 @@ All the services share the same network file system (NFS) for storing videos.
     
     \end{tikzpicture}
     \caption{Video Services Overview}
-    \label{tab:user-data}
+    \label{fig:video-service-overview}
 \end{figure}
 
 \pagebreak
