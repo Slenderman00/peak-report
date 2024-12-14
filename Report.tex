@@ -21,6 +21,19 @@
 \setcounter{biburlucpenalty}{100}
 \setcounter{biburllcpenalty}{100}
 
+\usepackage{background}
+\backgroundsetup{
+  position=current page.north west,
+  angle=0,
+  nodeanchor=north west,
+  vshift=-1cm,
+  hshift=1cm,
+  color=red,
+  opacity=1,
+  scale=1,
+  contents={Preprint}
+}
+
 \definecolor{darkblue}{RGB}{0, 0, 102} 
 \hypersetup{
     colorlinks=true,
@@ -76,7 +89,7 @@
     The system achieves robust fault tolerance through native DNS client failover capabilities, leveraging the universal support for multiple 
     record resolution and automatic retry behavior present in all modern DNS implementations. 
     This eliminates the need for custom failover logic while providing battle-tested reliability mechanisms that operate transparently to applications. 
-    This paper describes the implementation of Peak, a proof-of-concept implementation of the proposed architecture, along with its development process and tooling.
+    This paper describes the implementation of Peak, a proof-of-concept implementation of the proposed architecture.
 \end{abstract}
 
 \pagebreak
@@ -258,8 +271,7 @@ The following papers describes systems for DNS based load balancing.
 \\
 \\
 "Load balancing of DNS-based distributed Web server systems with page caching"\cite{xuLoadBalancingDNSbased2004} by Zhong Xu, Rong Huang and Laxmi N. Bhuyan published in 2004
-Examines "various caching issues, in-cluding the load balancing algorithms of the DNS, the lo-
-cations of caches, and the page caching policies, for the DNS-based web server system."
+Examines "various caching issues, in-cluding the load balancing algorithms of the DNS, the locations of caches, and the page caching policies, for the DNS-based web server system."
 \\
 \\
 "Dynamic Load Balancing Method Based on DNS for Distributed Web Systems"\cite{moonDynamicLoadBalancing2005} 
@@ -739,7 +751,7 @@ All the services share the same network file system (NFS) for storing videos.
 
 \newpage
 
-\section{Post Services}
+\subsubsection{Post Services}
 There are two post services in the Peak reference implementation:
 \begin{itemize}
     \item \textbf{read.posts.peak} - This service is responsible for reading posts
@@ -757,6 +769,31 @@ This ensures that only the user that uploaded the video can post it.
     \item \textbf{Production deployment} - The system has not been deployed in a production environment, and it is unclear how it will perform in a real-world scenario.
     \item \textbf{Cluster-Level DDoS mitigation} - The "Rug-Pull" warrant its own paper.
 \end{itemize}
+
+\section{Conclusion}
+\subsection{Summary}
+This paper introduced the Proxy Elimination Architecture for Kubernetes (PEAK), the PeakDNS server, and the Peak reference implementation.
+PEAK leverages the availability of IPv6 addresses to create a system for direct client-to-service communication.
+It achieves this by using metrics-based record management to manage DNS records. This eliminates the need for exposed proxy layers in the system.
+We also introduced several novel applications of the PEAK architecture, such as the "rug-pull" DDoS mitigation strategy and client-mediated communication.
+
+\subsection{Potential Impact}
+The PEAK architecture has the potential to transform the way we design and implement distributed systems.
+So that we can build systems that are less bloated yet performs better.
+By eliminating the proxy layers we not only reduce the complexity of the system but also
+remove potential single points of failure.
+We hope that this paper will inspire others to think outside the box 
+and prioritize simplicity over complexity when designing future systems
+and architectures.
+
+\subsection{Encouragement}
+As noted in the future work section, the PEAK architecture has not been performance tested or deployed in a production environment.
+We encourage others to build on this work, it is also worth nothing that this paper is 
+licensed under the Creative Commons Attribution-ShareAlike 4.0 International License, welcoming contributions and 
+further input.
+\\
+\\
+My email address is available on the front page of this paper, i encourage anyone with questions or comments to reach out.
 
 \pagebreak
 \addcontentsline{toc}{section}{References}

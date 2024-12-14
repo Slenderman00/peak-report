@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.2)  13 DEC 2024 20:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.2)  14 DEC 2024 01:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -678,32 +678,65 @@ File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@lib@dec@te@box=\box72
 )) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texmf-dist/tex/latex/background/background.sty
+Package: background 2014/03/04 v2.1 background material
+ (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks34
+\XKV@tempa@toks=\toks35
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 33.
-\@float@every@table=\toks34
-\@quotelevel=\count436
-\@quotereset=\count437
+\XKV@depth=\count436
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/share/texmf-dist/tex/latex/everypage/everypage.sty
+Package: everypage 2020/10/17 R2.0b Hooks to run on every page
+
+
+Package everypage Warning: Functionality similar to this package has recently
+(everypage)                been implemented in LaTeX. This package is now in
+(everypage)                legacy status.
+(everypage)                Please, don't use it in new documents and packages.
+
+
+Package everypage Warning: You appear to be running a version of LaTeX
+(everypage)                providing the new functionality.
+(everypage)                Doing the best to deliver the original `everypage`
+(everypage)                interface on top of it. Strict equivalence is
+(everypage)                not possible, breakage may occur.
+(everypage)                If truly needed, Use `everypage-1x` to force the
+(everypage)                loading of an older code base.
+
+) (/usr/share/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
+\AP@output=\toks36
+\AP@partial=\box73
+\AP@footins=\box74
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 46.
+\@float@every@table=\toks37
+\@quotelevel=\count437
+\@quotereset=\count438
  (./Report.aux)
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
@@ -723,40 +756,40 @@ Package biblatex Warning: Biber reported the following issues
 (biblatex)                - Range field 'pages' in entry 'hongDNSbasedLoadBalancing2006' is malformed, falling back to literal.
 
 )
-Package biblatex Info: Reference section=0 on input line 67.
-Package biblatex Info: Reference segment=0 on input line 67.
+Package biblatex Info: Reference section=0 on input line 80.
+Package biblatex Info: Reference segment=0 on input line 80.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count438
+\scratchcounter=\count439
 \scratchdimen=\dimen265
-\scratchbox=\box73
-\nofMPsegments=\count439
-\nofMParguments=\count440
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count441
+\scratchbox=\box75
+\nofMPsegments=\count440
+\nofMParguments=\count441
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count442
 \MPscratchDim=\dimen266
-\MPnumerator=\count442
-\makeMPintoPDFobject=\count443
-\everyMPtoPDFconversion=\toks36
+\MPnumerator=\count443
+\makeMPintoPDFobject=\count444
+\everyMPtoPDFconversion=\toks39
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count444
-Package hyperref Info: Link coloring ON on input line 67.
+\c@lstlisting=\count445
+Package hyperref Info: Link coloring ON on input line 80.
  (./Report.out) (./Report.out)
 \@outlinefile=\write5
 \openout5 = `Report.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 69.
+(Font)              <14.4> on input line 82.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 69.
- [1
+(Font)              <7> on input line 82.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Report.toc
+] (./Report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -768,91 +801,91 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout6 = `Report.toc'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 90--120
+Underfull \hbox (badness 10000) in paragraph at lines 103--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--120
+Underfull \hbox (badness 10000) in paragraph at lines 103--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--120
+Underfull \hbox (badness 10000) in paragraph at lines 103--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--120
+Underfull \hbox (badness 10000) in paragraph at lines 103--133
 
  []
 
 [4] [5{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [6] [7]
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 214.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 214.
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 227.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 227.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 214.
+(Font)              for symbol `textbraceleft' on input line 227.
 
 
-Overfull \hbox (13.90924pt too wide) in paragraph at lines 215--216
+Overfull \hbox (13.90924pt too wide) in paragraph at lines 228--229
 []\OT1/cmr/m/n/12 Body: \OMS/cmtt/m/n/12 f\OT1/cmtt/m/n/12 "userId": "1234567890", "name": "John Doe", "admin":
  []
 
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 256--282
+Underfull \hbox (badness 10000) in paragraph at lines 269--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--282
+Underfull \hbox (badness 10000) in paragraph at lines 269--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--282
+Underfull \hbox (badness 10000) in paragraph at lines 269--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--282
+Underfull \hbox (badness 10000) in paragraph at lines 269--294
 
  []
 
 [10]
-Overfull \hbox (41.7992pt too wide) in paragraph at lines 372--373
+Overfull \hbox (41.7992pt too wide) in paragraph at lines 384--385
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--376
+Underfull \hbox (badness 10000) in paragraph at lines 297--388
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--376
+Underfull \hbox (badness 10000) in paragraph at lines 297--388
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--376
+Underfull \hbox (badness 10000) in paragraph at lines 297--388
 
  []
 
 [11]
-Overfull \hbox (30.75604pt too wide) in paragraph at lines 398--398
+Overfull \hbox (30.75604pt too wide) in paragraph at lines 410--410
 []    \OT1/cmtt/m/n/8 nginx_connections_active{container="nginx-exporter", namespace="%namespace%", pod="%pod-name%"}[] 
  []
 
 
-Overfull \hbox (13.7558pt too wide) in paragraph at lines 398--398
+Overfull \hbox (13.7558pt too wide) in paragraph at lines 410--410
 []    \OT1/cmtt/m/n/8 container_memory_working_set_bytes{namespace="%namespace%", pod="%pod-name%"} / 1024 / 1024[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--406
+Underfull \hbox (badness 10000) in paragraph at lines 412--418
 
  []
 
@@ -861,40 +894,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 400--406
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 519--530
+Underfull \hbox (badness 10000) in paragraph at lines 531--542
 
  []
 
 [14] [15]
-<./images/bad-actors.drawio.png, id=348, 825.0825pt x 702.625pt>
+<./images/bad-actors.drawio.png, id=368, 825.0825pt x 702.625pt>
 File: ./images/bad-actors.drawio.png Graphic file (type png)
 <use ./images/bad-actors.drawio.png>
-Package pdftex.def Info: ./images/bad-actors.drawio.png  used on input line 611.
+Package pdftex.def Info: ./images/bad-actors.drawio.png  used on input line 623.
 (pdftex.def)             Requested size: 390.0pt x 332.12071pt.
  [16 <./images/bad-actors.drawio.png>]
-<./images/service-diagram.drawio.png, id=358, 783.92876pt x 653.44125pt>
+<./images/service-diagram.drawio.png, id=378, 783.92876pt x 653.44125pt>
 File: ./images/service-diagram.drawio.png Graphic file (type png)
 <use ./images/service-diagram.drawio.png>
-Package pdftex.def Info: ./images/service-diagram.drawio.png  used on input line 630.
+Package pdftex.def Info: ./images/service-diagram.drawio.png  used on input line 642.
 (pdftex.def)             Requested size: 390.0pt x 325.08463pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17]
-Overfull \hbox (80.25873pt too wide) in paragraph at lines 651--663
+Overfull \hbox (80.25873pt too wide) in paragraph at lines 663--675
  [][] 
  []
 
 [18 <./images/service-diagram.drawio.png>]
-Overfull \hbox (57.24474pt too wide) in paragraph at lines 735--736
+Overfull \hbox (57.24474pt too wide) in paragraph at lines 747--748
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19] [20] [21] [22] [23] (./Report.aux)
+[19] [20]
+Overfull \hbox (3.96504pt too wide) in paragraph at lines 775--779
+\OT1/cmr/m/n/12 (PEAK), the PeakDNS server, and the Peak ref-er-ence im-ple-men-ta-tion. PEAK
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 790--797
+
+ []
+
+[21] [22] [23] [24] (./Report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -904,24 +947,24 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 516F8CBA765A186F91301DAF1E2232D7;5929.
+(rerunfilecheck)             Checksum: 2358CE7E25F29298EE24F0A5C951BF80;6409.
 Package logreq Info: Writing requests to 'Report.run.xml'.
 \openout1 = `Report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30994 strings out of 476076
- 610139 string characters out of 5793775
- 1952187 words of memory out of 5000000
- 52568 multiletter control sequences out of 15000+600000
+ 31421 strings out of 476076
+ 618027 string characters out of 5793775
+ 1953187 words of memory out of 5000000
+ 52968 multiletter control sequences out of 15000+600000
  565984 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,10n,93p,1432b,1245s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,93p,1432b,1463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Report.pdf (23 pages, 268247 bytes).
+Output written on Report.pdf (24 pages, 273514 bytes).
 PDF statistics:
- 486 PDF objects out of 1000 (max. 8388607)
- 409 compressed objects within 5 object streams
- 91 named destinations out of 1000 (max. 500000)
- 445 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 432 compressed objects within 5 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 477 words of extra memory for PDF output out of 10000 (max. 10000000)
 

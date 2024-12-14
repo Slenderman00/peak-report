@@ -287,6 +287,16 @@ INPUT /usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydeco
 INPUT /usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.text.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+INPUT /usr/share/texmf-dist/tex/latex/background/background.sty
+INPUT /usr/share/texmf-dist/tex/latex/background/background.sty
+INPUT /usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+INPUT /usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+INPUT /usr/share/texmf-dist/tex/latex/everypage/everypage.sty
+INPUT /usr/share/texmf-dist/tex/latex/everypage/everypage.sty
+INPUT /usr/share/texmf-dist/tex/latex/tools/afterpage.sty
+INPUT /usr/share/texmf-dist/tex/latex/tools/afterpage.sty
 INPUT ./Report.aux
 INPUT ./Report.aux
 INPUT Report.aux

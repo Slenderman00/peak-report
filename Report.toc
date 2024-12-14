@@ -35,6 +35,10 @@
 \contentsline {subsubsection}{\numberline {5.2.1}Service Overview}{17}{subsubsection.5.2.1}%
 \contentsline {subsubsection}{\numberline {5.2.2}Authentication: self.auth.peak}{18}{subsubsection.5.2.2}%
 \contentsline {subsubsection}{\numberline {5.2.3}Video Services}{19}{subsubsection.5.2.3}%
-\contentsline {section}{\numberline {6}Post Services}{20}{section.6}%
-\contentsline {section}{\numberline {7}Future work}{20}{section.7}%
-\contentsline {section}{References}{22}{section.7}%
+\contentsline {subsubsection}{\numberline {5.2.4}Post Services}{20}{subsubsection.5.2.4}%
+\contentsline {section}{\numberline {6}Future work}{20}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Summary}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Potential Impact}{21}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Encouragement}{21}{subsection.7.3}%
+\contentsline {section}{References}{23}{subsection.7.3}%
